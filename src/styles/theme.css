@@ -30,7 +30,7 @@
   --chart-3: #8B4513;
   --chart-4: #D4B896;
   --chart-5: #F0C060;
-  --radius: 0.25rem;
+  --radius: 0.75rem;
   --sidebar: #1C0D00;
   --sidebar-foreground: #FBF3E8;
   --sidebar-primary: #D4952A;
@@ -125,7 +125,27 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+    text-rendering: optimizeLegibility;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background: #B86820;
+    color: #FBF3E8;
+  }
+
+  :focus-visible {
+    outline: 2px solid #B86820;
+    outline-offset: 2px;
+  }
+
+  img {
+    user-select: none;
   }
 
   html {

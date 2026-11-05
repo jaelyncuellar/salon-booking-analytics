@@ -211,14 +211,16 @@ function NavBar({ current, setPage }: { current: Page; setPage: (p: Page) => voi
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-4"
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-3.5 shadow-lg shadow-black/25 border-b border-white/5"
       style={{ background: "rgba(28, 13, 0, 0.85)", backdropFilter: "blur(12px)" }}
     >
       <button
         onClick={() => { setPage("home"); setOpen(false); }}
-        className="flex items-center gap-2 text-[#E8C060] font-['Playfair_Display'] italic text-xl tracking-wide"
+        className="flex items-center gap-2.5 text-[#E8C060] font-['Playfair_Display'] italic text-xl tracking-wide"
       >
-        <Sun size={20} strokeWidth={1.5} />
+        <span className="w-9 h-9 rounded-full bg-gradient-to-br from-[#E8A83A] to-[#B86820] flex items-center justify-center text-[#1C0D00] shadow-md shadow-black/30">
+          <Sun size={18} strokeWidth={2} />
+        </span>
         Electric Sun Tanning
       </button>
 
@@ -236,7 +238,7 @@ function NavBar({ current, setPage }: { current: Page; setPage: (p: Page) => voi
         ))}
         <button
           onClick={() => setPage("booking")}
-          className="px-5 py-2 bg-[#B86820] text-[#FBF3E8] text-sm tracking-widest uppercase font-['DM_Sans'] hover:bg-[#D4952A] transition-colors"
+          className="px-6 py-2.5 rounded-full bg-[#B86820] text-[#FBF3E8] text-sm tracking-widest uppercase font-['DM_Sans'] hover:bg-[#D4952A] shadow-md shadow-black/30 transition-all hover:-translate-y-px"
         >
           Book Now
         </button>
@@ -271,7 +273,7 @@ function NavBar({ current, setPage }: { current: Page; setPage: (p: Page) => voi
           ))}
           <button
             onClick={() => { setPage("booking"); setOpen(false); }}
-            className="mx-6 my-4 py-3 bg-[#B86820] text-[#FBF3E8] text-sm tracking-widest uppercase hover:bg-[#D4952A] transition-colors"
+            className="mx-6 my-4 py-3 rounded-full bg-[#B86820] text-[#FBF3E8] text-sm tracking-widest uppercase hover:bg-[#D4952A] transition-colors"
           >
             Book Now
           </button>
@@ -298,8 +300,8 @@ function HeroPage({ setPage }: { setPage: (p: Page) => void }) {
           style={{ background: "linear-gradient(to top, rgba(28,13,0,0.95) 0%, rgba(28,13,0,0.2) 60%, transparent 100%)" }}
         />
         <div className="relative z-10 px-6 md:px-20 max-w-5xl">
-          <p className="text-[#D4952A] text-xs tracking-[0.35em] uppercase font-['DM_Sans'] mb-6">
-            Award Winning Tanning Studio · Est. 2004
+          <p className="inline-flex items-center gap-2 rounded-full border border-[rgba(212,149,42,0.4)] bg-white/5 backdrop-blur px-4 py-1.5 text-[#E8C060] text-[11px] tracking-[0.3em] uppercase font-['DM_Sans'] mb-7">
+            <Sun size={12} /> Award Winning Tanning Studio · Est. 2004
           </p>
           <h1 className="font-['Playfair_Display'] text-[#FBF3E8] text-5xl md:text-8xl font-bold italic leading-none mb-6">
             Glow like<br />
@@ -311,13 +313,13 @@ function HeroPage({ setPage }: { setPage: (p: Page) => void }) {
           <div className="flex flex-col sm:flex-row gap-4">
             <button
               onClick={() => setPage("booking")}
-              className="px-8 py-4 bg-[#B86820] text-[#FBF3E8] text-sm tracking-widest uppercase font-['DM_Sans'] hover:bg-[#D4952A] transition-colors flex items-center gap-2"
+              className="px-8 py-4 rounded-full bg-[#B86820] text-[#FBF3E8] text-sm tracking-widest uppercase font-['DM_Sans'] hover:bg-[#D4952A] shadow-xl shadow-black/40 transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2"
             >
               Book a Session <ArrowRight size={16} />
             </button>
             <button
               onClick={() => setPage("services")}
-              className="px-8 py-4 border border-[rgba(212,149,42,0.5)] text-[#E8C060] text-sm tracking-widest uppercase font-['DM_Sans'] hover:border-[#E8C060] transition-colors"
+              className="px-8 py-4 rounded-full border border-[rgba(212,149,42,0.5)] text-[#E8C060] text-sm tracking-widest uppercase font-['DM_Sans'] hover:border-[#E8C060] hover:bg-white/5 backdrop-blur transition-all flex items-center justify-center"
             >
               View Services
             </button>
@@ -362,10 +364,10 @@ function HeroPage({ setPage }: { setPage: (p: Page) => void }) {
               All services <ArrowRight size={14} />
             </button>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#E8D5B5]">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {SERVICES.slice(0, 3).map((s) => (
-              <div key={s.id} className="bg-[#FBF3E8] p-8 hover:bg-[#FFF8EE] transition-colors group">
-                <div className="h-40 mb-6 overflow-hidden bg-[#E8D5B5]">
+              <div key={s.id} className="bg-[#FFF8EE] rounded-3xl p-6 shadow-sm ring-1 ring-[#B86820]/10 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group overflow-hidden">
+                <div className="h-44 mb-6 overflow-hidden rounded-2xl bg-[#E8D5B5]">
                   <img
                     src={s.image}
                     alt={s.name}
@@ -398,7 +400,7 @@ function HeroPage({ setPage }: { setPage: (p: Page) => void }) {
               { name: "James W.", rating: 5, text: "Spray tan is flawless — no streaks, no orange, just the most natural colour I've ever had. Marco is an artist." },
               { name: "Elise M.", rating: 5, text: "The Glow Package pays for itself after two visits. Plus the studio is stunning. Feels like a luxury spa, not a tanning salon." },
             ].map((t) => (
-              <div key={t.name} className="border border-[rgba(212,149,42,0.2)] p-8">
+              <div key={t.name} className="border border-[rgba(212,149,42,0.2)] bg-white/[0.03] rounded-3xl p-8 hover:border-[rgba(212,149,42,0.45)] hover:bg-white/[0.05] transition-all duration-300">
                 <div className="flex gap-1 mb-4">
                   {Array.from({ length: t.rating }).map((_, i) => (
                     <Star key={i} size={14} fill="#E8C060" stroke="none" />
@@ -426,7 +428,7 @@ function HeroPage({ setPage }: { setPage: (p: Page) => void }) {
           </p>
           <button
             onClick={() => setPage("booking")}
-            className="px-10 py-4 bg-[#1C0D00] text-[#E8C060] text-sm tracking-widest uppercase font-['DM_Sans'] hover:bg-[#2E1800] transition-colors flex items-center gap-2 mx-auto"
+            className="px-10 py-4 rounded-full bg-[#1C0D00] text-[#E8C060] text-sm tracking-widest uppercase font-['DM_Sans'] hover:bg-[#2E1800] shadow-xl shadow-black/25 transition-all hover:-translate-y-0.5 flex items-center gap-2 mx-auto"
           >
             Book Now <ArrowRight size={16} />
           </button>
@@ -494,9 +496,9 @@ function ServicesPage({ setPage }: { setPage: (p: Page) => void }) {
       </div>
 
       <div className="max-w-6xl mx-auto px-6 md:px-20 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#E8D5B5]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {SERVICES.map((s) => (
-            <div key={s.id} className="bg-[#FBF3E8] hover:bg-[#FFF8EE] transition-colors group">
+            <div key={s.id} className="bg-[#FFF8EE] rounded-3xl overflow-hidden shadow-sm ring-1 ring-[#B86820]/10 hover:shadow-xl transition-all duration-300 group">
               <div className="h-56 overflow-hidden bg-[#E8D5B5]">
                 <img
                   src={s.image}
@@ -526,7 +528,7 @@ function ServicesPage({ setPage }: { setPage: (p: Page) => void }) {
                 </ul>
                 <button
                   onClick={() => setPage("booking")}
-                  className="w-full py-3 bg-[#1C0D00] text-[#E8C060] text-xs tracking-widest uppercase font-['DM_Sans'] hover:bg-[#B86820] hover:text-[#FBF3E8] transition-colors"
+                  className="w-full py-3.5 rounded-full bg-[#1C0D00] text-[#E8C060] text-xs tracking-widest uppercase font-['DM_Sans'] hover:bg-[#B86820] hover:text-[#FBF3E8] transition-all"
                 >
                   Book {s.name}
                 </button>
@@ -566,7 +568,7 @@ function BookingPage() {
           <h2 className="font-['Playfair_Display'] text-5xl text-[#FBF3E8] italic mb-6">
             See you soon, {form.name.split(" ")[0]}.
           </h2>
-          <div className="border border-[rgba(212,149,42,0.25)] p-6 mb-8 text-left space-y-3">
+          <div className="border border-[rgba(212,149,42,0.25)] rounded-3xl bg-white/[0.03] p-6 mb-8 text-left space-y-3">
             <p className="text-[#C8A87A] font-['DM_Sans'] text-sm flex justify-between">
               <span className="text-[#7A5530]">Service</span> {selected?.name}
             </p>
@@ -587,7 +589,7 @@ function BookingPage() {
           </p>
           <button
             onClick={() => { setStep(1); setSelected(null); setDate(""); setTime(""); setForm({ name: "", email: "", phone: "", notes: "" }); setConfirmed(false); }}
-            className="px-8 py-3 border border-[rgba(212,149,42,0.4)] text-[#E8C060] text-xs tracking-widest uppercase font-['DM_Sans'] hover:border-[#E8C060] transition-colors"
+            className="px-8 py-3 rounded-full border border-[rgba(212,149,42,0.4)] text-[#E8C060] text-xs tracking-widest uppercase font-['DM_Sans'] hover:border-[#E8C060] hover:bg-white/5 transition-all"
           >
             Book another
           </button>
@@ -615,7 +617,7 @@ function BookingPage() {
               }`}
             >
               <span
-                className={`w-5 h-5 rounded-full flex items-center justify-center text-xs border ${
+                className={`w-7 h-7 rounded-full flex items-center justify-center text-[11px] border ${
                   step > i + 1
                     ? "border-[#B86820] bg-[#B86820] text-[#FBF3E8]"
                     : step === i + 1
@@ -641,9 +643,9 @@ function BookingPage() {
                 <button
                   key={s.id}
                   onClick={() => { setSelected(s); setStep(2); }}
-                  className={`text-left p-6 border transition-all ${
+                  className={`text-left p-6 rounded-3xl border shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 ${
                     selected?.id === s.id
-                      ? "border-[#B86820] bg-[#FFF8EE]"
+                      ? "border-[#B86820] bg-[#FFF8EE] ring-2 ring-[#B86820]/30"
                       : "border-[rgba(184,104,32,0.2)] bg-[#FFF8EE] hover:border-[#B86820]"
                   }`}
                 >
@@ -679,7 +681,7 @@ function BookingPage() {
                   min={today}
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="w-full bg-[#FFF8EE] border border-[rgba(184,104,32,0.3)] px-4 py-3 font-['DM_Sans'] text-[#1C0D00] focus:outline-none focus:border-[#B86820]"
+                  className="w-full bg-[#FFF8EE] border border-[rgba(184,104,32,0.3)] rounded-xl px-4 py-3 font-['DM_Sans'] text-[#1C0D00] focus:outline-none focus:border-[#B86820] focus:ring-2 focus:ring-[#B86820]/25 transition-shadow"
                 />
               </div>
               <div>
@@ -689,7 +691,7 @@ function BookingPage() {
                     <button
                       key={t}
                       onClick={() => setTime(t)}
-                      className={`py-2 px-4 border text-sm font-['DM_Sans'] transition-colors ${
+                      className={`py-2.5 px-4 rounded-full border text-sm font-['DM_Sans'] transition-all ${
                         time === t
                           ? "border-[#B86820] bg-[#B86820] text-[#FBF3E8]"
                           : "border-[rgba(184,104,32,0.3)] text-[#1C0D00] hover:border-[#B86820]"
@@ -702,13 +704,13 @@ function BookingPage() {
               </div>
             </div>
             <div className="flex gap-4 mt-10">
-              <button onClick={() => setStep(1)} className="flex items-center gap-2 px-6 py-3 border border-[rgba(184,104,32,0.3)] text-[#7A5530] text-xs tracking-widest uppercase font-['DM_Sans'] hover:border-[#B86820] transition-colors">
+              <button onClick={() => setStep(1)} className="flex items-center gap-2 px-6 py-3 rounded-full border border-[rgba(184,104,32,0.3)] text-[#7A5530] text-xs tracking-widest uppercase font-['DM_Sans'] hover:border-[#B86820] transition-colors">
                 <ChevronLeft size={14} /> Back
               </button>
               <button
                 onClick={() => date && time && setStep(3)}
                 disabled={!date || !time}
-                className="flex items-center gap-2 px-8 py-3 bg-[#B86820] text-[#FBF3E8] text-xs tracking-widest uppercase font-['DM_Sans'] hover:bg-[#D4952A] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                className="flex items-center gap-2 px-8 py-3 rounded-full bg-[#B86820] text-[#FBF3E8] text-xs tracking-widest uppercase font-['DM_Sans'] hover:bg-[#D4952A] shadow-md shadow-[#B86820]/25 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 Continue <ChevronRight size={14} />
               </button>
@@ -736,7 +738,7 @@ function BookingPage() {
                     placeholder={f.placeholder}
                     value={form[f.key as keyof typeof form]}
                     onChange={(e) => setForm({ ...form, [f.key]: e.target.value })}
-                    className="w-full bg-[#FFF8EE] border border-[rgba(184,104,32,0.3)] px-4 py-3 font-['DM_Sans'] text-[#1C0D00] placeholder:text-[#C8A87A] focus:outline-none focus:border-[#B86820]"
+                    className="w-full bg-[#FFF8EE] border border-[rgba(184,104,32,0.3)] rounded-xl px-4 py-3 font-['DM_Sans'] text-[#1C0D00] placeholder:text-[#C8A87A] focus:outline-none focus:border-[#B86820] focus:ring-2 focus:ring-[#B86820]/25 transition-shadow"
                   />
                 </div>
               ))}
@@ -747,13 +749,13 @@ function BookingPage() {
                   placeholder="Any skin sensitivities, preferences, or questions..."
                   value={form.notes}
                   onChange={(e) => setForm({ ...form, notes: e.target.value })}
-                  className="w-full bg-[#FFF8EE] border border-[rgba(184,104,32,0.3)] px-4 py-3 font-['DM_Sans'] text-[#1C0D00] placeholder:text-[#C8A87A] focus:outline-none focus:border-[#B86820] resize-none"
+                  className="w-full bg-[#FFF8EE] border border-[rgba(184,104,32,0.3)] rounded-xl px-4 py-3 font-['DM_Sans'] text-[#1C0D00] placeholder:text-[#C8A87A] focus:outline-none focus:border-[#B86820] focus:ring-2 focus:ring-[#B86820]/25 transition-shadow resize-none"
                 />
               </div>
             </div>
 
             {/* Order summary */}
-            <div className="border border-[rgba(184,104,32,0.2)] p-6 mb-8 bg-[#FFF8EE]">
+            <div className="border border-[rgba(184,104,32,0.2)] rounded-3xl shadow-sm p-6 mb-8 bg-[#FFF8EE]">
               <p className="text-[#B86820] text-xs tracking-widest uppercase font-['DM_Sans'] mb-4">Order Summary</p>
               <div className="space-y-2 text-sm font-['DM_Sans']">
                 <div className="flex justify-between text-[#7A5530]"><span>Service</span><span className="text-[#1C0D00]">{selected?.name}</span></div>
@@ -767,13 +769,13 @@ function BookingPage() {
             </div>
 
             <div className="flex gap-4">
-              <button onClick={() => setStep(2)} className="flex items-center gap-2 px-6 py-3 border border-[rgba(184,104,32,0.3)] text-[#7A5530] text-xs tracking-widest uppercase font-['DM_Sans'] hover:border-[#B86820] transition-colors">
+              <button onClick={() => setStep(2)} className="flex items-center gap-2 px-6 py-3 rounded-full border border-[rgba(184,104,32,0.3)] text-[#7A5530] text-xs tracking-widest uppercase font-['DM_Sans'] hover:border-[#B86820] transition-colors">
                 <ChevronLeft size={14} /> Back
               </button>
               <button
                 onClick={handleConfirm}
                 disabled={!form.name || !form.email}
-                className="flex items-center gap-2 px-8 py-3 bg-[#B86820] text-[#FBF3E8] text-xs tracking-widest uppercase font-['DM_Sans'] hover:bg-[#D4952A] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                className="flex items-center gap-2 px-8 py-3 rounded-full bg-[#B86820] text-[#FBF3E8] text-xs tracking-widest uppercase font-['DM_Sans'] hover:bg-[#D4952A] shadow-md shadow-[#B86820]/25 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 Confirm Booking <Check size={14} />
               </button>
@@ -908,8 +910,8 @@ function NewsPage() {
 
       <div className="max-w-6xl mx-auto px-6 md:px-20 py-16">
         {/* Featured */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#E8D5B5] mb-px">
-          <div className="bg-[#FBF3E8] relative overflow-hidden h-[420px] group cursor-pointer" onClick={() => setActivePost(INSTAGRAM_POSTS[0])}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+          <div className="bg-[#FBF3E8] relative overflow-hidden rounded-3xl h-[420px] group cursor-pointer shadow-sm" onClick={() => setActivePost(INSTAGRAM_POSTS[0])}>
             <img src={INSTAGRAM_POSTS[0].image} alt={INSTAGRAM_POSTS[0].caption} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
             <div className="absolute inset-0 bg-gradient-to-t from-[rgba(28,13,0,0.85)] to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-8">
@@ -921,9 +923,9 @@ function NewsPage() {
               <p className="text-[#7A5530] font-['DM_Sans'] text-xs mt-2">♥ {INSTAGRAM_POSTS[0].likes}</p>
             </div>
           </div>
-          <div className="grid grid-rows-2 gap-px">
+          <div className="grid grid-rows-2 gap-5">
             {INSTAGRAM_POSTS.slice(1, 3).map((post) => (
-              <div key={post.id} className="bg-[#FBF3E8] relative overflow-hidden h-[209px] group cursor-pointer" onClick={() => setActivePost(post)}>
+              <div key={post.id} className="bg-[#FBF3E8] relative overflow-hidden rounded-3xl h-[209px] group cursor-pointer shadow-sm" onClick={() => setActivePost(post)}>
                 <img src={post.image} alt={post.caption} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[rgba(28,13,0,0.85)] to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -1031,7 +1033,7 @@ function ContactPage() {
                     placeholder={f.placeholder}
                     value={form[f.key as keyof typeof form]}
                     onChange={(e) => setForm({ ...form, [f.key]: e.target.value })}
-                    className="w-full bg-[#FFF8EE] border border-[rgba(184,104,32,0.3)] px-4 py-3 font-['DM_Sans'] text-[#1C0D00] placeholder:text-[#C8A87A] focus:outline-none focus:border-[#B86820]"
+                    className="w-full bg-[#FFF8EE] border border-[rgba(184,104,32,0.3)] rounded-xl px-4 py-3 font-['DM_Sans'] text-[#1C0D00] placeholder:text-[#C8A87A] focus:outline-none focus:border-[#B86820] focus:ring-2 focus:ring-[#B86820]/25 transition-shadow"
                   />
                 </div>
               ))}
@@ -1042,7 +1044,7 @@ function ContactPage() {
                   placeholder="Tell us how we can help..."
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full bg-[#FFF8EE] border border-[rgba(184,104,32,0.3)] px-4 py-3 font-['DM_Sans'] text-[#1C0D00] placeholder:text-[#C8A87A] focus:outline-none focus:border-[#B86820] resize-none"
+                  className="w-full bg-[#FFF8EE] border border-[rgba(184,104,32,0.3)] rounded-xl px-4 py-3 font-['DM_Sans'] text-[#1C0D00] placeholder:text-[#C8A87A] focus:outline-none focus:border-[#B86820] focus:ring-2 focus:ring-[#B86820]/25 transition-shadow resize-none"
                 />
               </div>
               <button
@@ -1156,7 +1158,7 @@ function AdminDashboard() {
                 item.active
                   ? "bg-[rgba(212,149,42,0.15)] text-[#E8C060]"
                   : "text-[#7A5530] hover:text-[#C8A87A] hover:bg-[rgba(212,149,42,0.07)]"
-              }`}
+              } rounded-xl`}
             >
               {item.icon} {item.label}
             </button>
@@ -1192,7 +1194,7 @@ function AdminDashboard() {
               { icon: <Users size={18} />, label: "Active Members", value: "87", delta: "+12 this month", positive: true },
               { icon: <TrendingUp size={18} />, label: "Avg. Session Value", value: "$42.80", delta: "+$3.20", positive: true },
             ].map((kpi) => (
-              <div key={kpi.label} className="bg-[#1C0D00] border border-[rgba(212,149,42,0.15)] p-5">
+              <div key={kpi.label} className="bg-[#1C0D00] border border-[rgba(212,149,42,0.15)] rounded-2xl p-5 hover:border-[rgba(212,149,42,0.35)] transition-colors">
                 <div className="flex items-center justify-between mb-3">
                   <p className="text-[#7A5530] font-['DM_Sans'] text-xs tracking-widest uppercase">{kpi.label}</p>
                   <span className="text-[#B86820]">{kpi.icon}</span>
@@ -1205,7 +1207,7 @@ function AdminDashboard() {
 
           {/* Charts */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="md:col-span-2 bg-[#1C0D00] border border-[rgba(212,149,42,0.15)] p-5">
+            <div className="md:col-span-2 bg-[#1C0D00] border border-[rgba(212,149,42,0.15)] rounded-2xl p-5">
               <p className="text-[#7A5530] font-['DM_Sans'] text-xs tracking-widest uppercase mb-6">Revenue — 6 Months</p>
               <ResponsiveContainer width="100%" height={200}>
                 <AreaChart data={REVENUE_DATA} margin={{ top: 0, right: 0, left: -20, bottom: 0 }}>
@@ -1226,7 +1228,7 @@ function AdminDashboard() {
                 </AreaChart>
               </ResponsiveContainer>
             </div>
-            <div className="bg-[#1C0D00] border border-[rgba(212,149,42,0.15)] p-5">
+            <div className="bg-[#1C0D00] border border-[rgba(212,149,42,0.15)] rounded-2xl p-5">
               <p className="text-[#7A5530] font-['DM_Sans'] text-xs tracking-widest uppercase mb-6">Service Mix</p>
               <ResponsiveContainer width="100%" height={160}>
                 <PieChart>
@@ -1256,7 +1258,7 @@ function AdminDashboard() {
           </div>
 
           {/* Bookings table */}
-          <div className="bg-[#1C0D00] border border-[rgba(212,149,42,0.15)]">
+          <div className="bg-[#1C0D00] border border-[rgba(212,149,42,0.15)] rounded-2xl overflow-hidden">
             <div className="px-5 py-4 border-b border-[rgba(212,149,42,0.1)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <p className="text-[#7A5530] font-['DM_Sans'] text-xs tracking-widest uppercase">Recent Bookings</p>
               <div className="flex gap-3">
@@ -1267,7 +1269,7 @@ function AdminDashboard() {
                     placeholder="Search..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="bg-[#2E1800] border border-[rgba(212,149,42,0.2)] pl-8 pr-4 py-2 text-xs font-['DM_Sans'] text-[#C8A87A] placeholder:text-[#3D2200] focus:outline-none focus:border-[#B86820] w-40"
+                    className="bg-[#2E1800] border border-[rgba(212,149,42,0.2)] rounded-full pl-8 pr-4 py-2 text-xs font-['DM_Sans'] text-[#C8A87A] placeholder:text-[#3D2200] focus:outline-none focus:border-[#B86820] w-44"
                   />
                 </div>
                 <div className="relative">
@@ -1275,7 +1277,7 @@ function AdminDashboard() {
                   <select
                     value={statusFilter}
                     onChange={(e) => setStatusFilter(e.target.value)}
-                    className="bg-[#2E1800] border border-[rgba(212,149,42,0.2)] pl-8 pr-4 py-2 text-xs font-['DM_Sans'] text-[#C8A87A] focus:outline-none focus:border-[#B86820] appearance-none cursor-pointer"
+                    className="bg-[#2E1800] border border-[rgba(212,149,42,0.2)] rounded-full pl-8 pr-4 py-2 text-xs font-['DM_Sans'] text-[#C8A87A] focus:outline-none focus:border-[#B86820] appearance-none cursor-pointer"
                   >
                     <option value="all">All</option>
                     <option value="confirmed">Confirmed</option>
@@ -1284,7 +1286,7 @@ function AdminDashboard() {
                     <option value="cancelled">Cancelled</option>
                   </select>
                 </div>
-                <button className="flex items-center gap-2 px-4 py-2 bg-[#B86820] text-[#FBF3E8] text-xs tracking-widest uppercase font-['DM_Sans'] hover:bg-[#D4952A] transition-colors">
+                <button className="flex items-center gap-2 px-5 py-2 rounded-full bg-[#B86820] text-[#FBF3E8] text-xs tracking-widest uppercase font-['DM_Sans'] hover:bg-[#D4952A] transition-colors">
                   <Plus size={12} /> New
                 </button>
               </div>
@@ -1306,7 +1308,7 @@ function AdminDashboard() {
                       <td className="px-5 py-4 font-['DM_Sans'] text-sm text-[#FBF3E8]">{b.service}</td>
                       <td className="px-5 py-4 font-['DM_Mono'] text-xs text-[#7A5530]">{b.date}</td>
                       <td className="px-5 py-4">
-                        <span className={`px-2 py-1 font-['DM_Mono'] text-xs tracking-wide ${statusColor[b.status]}`}>
+                        <span className={`px-2.5 py-1 rounded-full font-['DM_Mono'] text-[11px] tracking-wide ${statusColor[b.status]}`}>
                           {b.status}
                         </span>
                       </td>
@@ -1339,8 +1341,21 @@ function AdminDashboard() {
 
 // ─── Root ────────────────────────────────────────────────────────────────────
 
+const PAGES: Page[] = ["home", "services", "booking", "about", "news", "contact", "admin"];
+
+function pageFromHash(): Page {
+  const h = window.location.hash.replace("#", "") as Page;
+  return PAGES.includes(h) ? h : "home";
+}
+
 export default function App() {
-  const [page, setPage] = useState<Page>("home");
+  const [page, setPageState] = useState<Page>(() => pageFromHash());
+
+  const setPage = (p: Page) => {
+    setPageState(p);
+    window.history.replaceState(null, "", p === "home" ? window.location.pathname : `#${p}`);
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+  };
 
   const isAdmin = page === "admin";
 
