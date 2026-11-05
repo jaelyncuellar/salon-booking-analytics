@@ -8,7 +8,7 @@ A complete website and management platform built for **Electric Sun Tanning**, a
 
 ## Walkthrough
 
-[▶ Watch the walkthrough (46s)](docs/walkthrough.mp4) — a scrolling tour of the home page, the services, the three-step booking flow, and the admin analytics dashboard.
+[▶ Watch the walkthrough (31s)](docs/walkthrough.mp4) — a scrolling tour of the home page, the services, the three-step booking flow, and the admin analytics dashboard.
 
 [![Watch the video walkthrough](docs/screenshots/home.png)](docs/walkthrough.mp4)
 
