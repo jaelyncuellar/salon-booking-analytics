@@ -18,7 +18,7 @@ A complete website and management platform built for **Electric Sun Tanning**, a
 ## Screenshots
 
 ### Home
-Warm, editorial home page with the salon's services, studio stats, and client reviews.
+Deep-green, neon-lit home page with the salon's services, studio stats, and client reviews.
 
 ![Home page](docs/screenshots/home.png)
 
@@ -101,11 +101,11 @@ npx vite preview
 
 - **React + TypeScript** — the interactive website itself, built with type-safe code
 - **Vite** — the build tool that makes the site fast to develop and quick to load
-- **Tailwind CSS** — the styling system behind the warm cream / espresso / amber design
+- **Tailwind CSS** — the styling system behind the deep green / neon lime design
 - **Recharts** — the revenue and service-mix charts in the admin dashboard
 - **Lucide icons** — the clean line icons throughout
 
-Design language: warm luxury boutique — cream and espresso tones with amber and gold accents, Playfair Display headlines with DM Sans body text. Full brand notes live in `guidelines/Guidelines.md`.
+Design language: local and chill with a neon sign in the window — deep pine green with neon lime and mint accents, a soft film grain, Shrikhand display headlines, Caveat handwritten notes, and DM Sans body text. Full brand notes live in `guidelines/Guidelines.md`.
 
 ---
 

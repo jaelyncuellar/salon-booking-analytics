@@ -181,11 +181,11 @@ const REVENUE_DATA = [
 ];
 
 const SERVICE_MIX = [
-  { name: "Golden Hour", value: 38, color: "#D4952A" },
-  { name: "Spray Tan", value: 22, color: "#B86820" },
-  { name: "Solar Luxe", value: 18, color: "#E8C060" },
-  { name: "Glow Package", value: 14, color: "#8B4513" },
-  { name: "Other", value: 8, color: "#C8A87A" },
+  { name: "Golden Hour", value: 38, color: "#9BE81E" },
+  { name: "Spray Tan", value: 22, color: "#3E9C14" },
+  { name: "Solar Luxe", value: 18, color: "#BFF747" },
+  { name: "Glow Package", value: 14, color: "#16A34A" },
+  { name: "Other", value: 8, color: "#8FAE94" },
 ];
 
 const ADMIN_BOOKINGS = [
@@ -212,13 +212,13 @@ function NavBar({ current, setPage }: { current: Page; setPage: (p: Page) => voi
   return (
     <header
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-3.5 shadow-lg shadow-black/25 border-b border-white/5"
-      style={{ background: "rgba(28, 13, 0, 0.85)", backdropFilter: "blur(12px)" }}
+      style={{ background: "rgba(6, 35, 27, 0.85)", backdropFilter: "blur(12px)" }}
     >
       <button
         onClick={() => { setPage("home"); setOpen(false); }}
-        className="flex items-center gap-2.5 text-[#E8C060] font-['Playfair_Display'] italic text-xl tracking-wide"
+        className="flex items-center gap-2.5 text-[#BFF747] font-['Shrikhand'] neon-text text-xl tracking-wide"
       >
-        <span className="w-9 h-9 rounded-full bg-gradient-to-br from-[#E8A83A] to-[#B86820] flex items-center justify-center text-[#1C0D00] shadow-md shadow-black/30">
+        <span className="w-9 h-9 rounded-full bg-gradient-to-br from-[#A3E635] to-[#3E9C14] flex items-center justify-center text-[#06231B] shadow-md shadow-black/30">
           <Sun size={18} strokeWidth={2} />
         </span>
         Electric Sun Tanning
@@ -230,7 +230,7 @@ function NavBar({ current, setPage }: { current: Page; setPage: (p: Page) => voi
             key={l.page}
             onClick={() => setPage(l.page)}
             className={`text-sm tracking-widest uppercase font-['DM_Sans'] transition-colors ${
-              current === l.page ? "text-[#E8C060]" : "text-[#C8A87A] hover:text-[#FBF3E8]"
+              current === l.page ? "text-[#BFF747]" : "text-[#8FAE94] hover:text-[#F2F7E6]"
             }`}
           >
             {l.label}
@@ -238,20 +238,20 @@ function NavBar({ current, setPage }: { current: Page; setPage: (p: Page) => voi
         ))}
         <button
           onClick={() => setPage("booking")}
-          className="px-6 py-2.5 rounded-full bg-[#B86820] text-[#FBF3E8] text-sm tracking-widest uppercase font-['DM_Sans'] hover:bg-[#D4952A] shadow-md shadow-black/30 transition-all hover:-translate-y-px"
+          className="px-6 py-2.5 rounded-full bg-[#3E9C14] text-[#F2F7E6] text-sm tracking-widest uppercase font-['DM_Sans'] hover:bg-[#9BE81E] shadow-md shadow-black/30 transition-all hover:-translate-y-px"
         >
           Book Now
         </button>
         <button
           onClick={() => setPage("admin")}
-          className="text-sm tracking-widest uppercase font-['DM_Sans'] text-[#7A5530] hover:text-[#C8A87A] transition-colors"
+          className="text-sm tracking-widest uppercase font-['DM_Sans'] text-[#55705A] hover:text-[#8FAE94] transition-colors"
         >
           Admin
         </button>
       </nav>
 
       <button
-        className="md:hidden text-[#E8C060]"
+        className="md:hidden text-[#BFF747]"
         onClick={() => setOpen(!open)}
       >
         {open ? <X size={22} /> : <Menu size={22} />}
@@ -260,20 +260,20 @@ function NavBar({ current, setPage }: { current: Page; setPage: (p: Page) => voi
       {open && (
         <div
           className="absolute top-full left-0 right-0 flex flex-col gap-0 font-['DM_Sans']"
-          style={{ background: "rgba(28, 13, 0, 0.97)" }}
+          style={{ background: "rgba(6, 35, 27, 0.97)" }}
         >
           {[...links, { label: "Admin", page: "admin" as Page }].map((l) => (
             <button
               key={l.page}
               onClick={() => { setPage(l.page); setOpen(false); }}
-              className="px-6 py-4 text-left text-sm tracking-widest uppercase text-[#C8A87A] border-b border-[rgba(212,149,42,0.15)] hover:text-[#E8C060]"
+              className="px-6 py-4 text-left text-sm tracking-widest uppercase text-[#8FAE94] border-b border-[rgba(163,230,53,0.15)] hover:text-[#BFF747]"
             >
               {l.label}
             </button>
           ))}
           <button
             onClick={() => { setPage("booking"); setOpen(false); }}
-            className="mx-6 my-4 py-3 rounded-full bg-[#B86820] text-[#FBF3E8] text-sm tracking-widest uppercase hover:bg-[#D4952A] transition-colors"
+            className="mx-6 my-4 py-3 rounded-full bg-[#3E9C14] text-[#F2F7E6] text-sm tracking-widest uppercase hover:bg-[#9BE81E] transition-colors"
           >
             Book Now
           </button>
@@ -285,11 +285,42 @@ function NavBar({ current, setPage }: { current: Page; setPage: (p: Page) => voi
 
 // ─── Pages ──────────────────────────────────────────────────────────────────
 
+function MarqueeStrip() {
+  const phrases = [
+    "Walk-ins welcome",
+    "Caldwell, Idaho",
+    "UV · Spray · Red Light",
+    "Open 7 days",
+    "Good vibes only",
+    "Treasure Valley glow",
+  ];
+  return (
+    <section className="bg-[#06231B] py-8 overflow-hidden" aria-hidden="true">
+      <div className="-rotate-1 w-[110%] -ml-[5%] bg-[#BFF747] shadow-[0_0_36px_rgba(163,230,53,0.35)]">
+        <div className="flex whitespace-nowrap animate-marquee py-2.5 w-max">
+          {[0, 1].map((half) => (
+            <div key={half} className="flex items-center">
+              {[...phrases, ...phrases].map((ph, i) => (
+                <span
+                  key={`${half}-${i}`}
+                  className="flex items-center gap-6 pr-6 text-[#06231B] font-['DM_Sans'] text-sm font-semibold tracking-[0.25em] uppercase"
+                >
+                  {ph} <Sun size={14} strokeWidth={2.5} />
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function HeroPage({ setPage }: { setPage: (p: Page) => void }) {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative h-screen flex items-end pb-24 overflow-hidden bg-[#1C0D00]">
+      <section className="relative h-screen flex items-end pb-24 overflow-hidden bg-[#06231B]">
         <img
           src="https://images.unsplash.com/photo-1532347922424-c652d9b7208e?w=1600&h=1000&fit=crop&auto=format"
           alt="Woman by poolside, sun-kissed and glowing"
@@ -297,39 +328,45 @@ function HeroPage({ setPage }: { setPage: (p: Page) => void }) {
         />
         <div
           className="absolute inset-0"
-          style={{ background: "linear-gradient(to top, rgba(28,13,0,0.95) 0%, rgba(28,13,0,0.2) 60%, transparent 100%)" }}
+          style={{ background: "linear-gradient(to top, rgba(6,35,27,0.95) 0%, rgba(6,35,27,0.2) 60%, transparent 100%)" }}
         />
+        <div className="hidden md:block absolute right-10 top-28 z-10 rotate-6 rounded-full bg-[#BFF747] text-[#06231B] font-['Caveat'] font-bold text-2xl px-6 py-2 shadow-[0_0_32px_rgba(163,230,53,0.45)] -rotate-3">
+          walk-ins welcome!
+        </div>
         <div className="relative z-10 px-6 md:px-20 max-w-5xl">
-          <p className="inline-flex items-center gap-2 rounded-full border border-[rgba(212,149,42,0.4)] bg-white/5 backdrop-blur px-4 py-1.5 text-[#E8C060] text-[11px] tracking-[0.3em] uppercase font-['DM_Sans'] mb-7">
+          <p className="inline-flex items-center gap-2 rounded-full border border-[rgba(163,230,53,0.4)] bg-white/5 backdrop-blur px-4 py-1.5 text-[#BFF747] text-[11px] tracking-[0.3em] uppercase font-['DM_Sans'] mb-7">
             <Sun size={12} /> Award Winning Tanning Studio · Est. 2004
           </p>
-          <h1 className="font-['Playfair_Display'] text-[#FBF3E8] text-5xl md:text-8xl font-bold italic leading-none mb-6">
+          <h1 className="font-['Shrikhand'] text-[#F2F7E6] text-5xl md:text-8xl font-bold italic leading-none mb-6">
             Glow like<br />
-            <span className="text-[#E8C060]">golden hour.</span>
+            <span className="text-[#BFF747] neon-text">golden hour.</span>
           </h1>
-          <p className="text-[#C8A87A] font-['DM_Sans'] text-lg md:text-xl max-w-xl leading-relaxed mb-10">
-            Bespoke UV and spray tanning tailored to your skin. Walk in warm, leave luminous.
+          <p className="text-[#8FAE94] font-['DM_Sans'] text-lg md:text-xl max-w-xl leading-relaxed mb-10">
+            UV beds + spray tans, right here in Caldwell. Come as you are, leave glowing — no beach, no filter, no fuss.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <button
               onClick={() => setPage("booking")}
-              className="px-8 py-4 rounded-full bg-[#B86820] text-[#FBF3E8] text-sm tracking-widest uppercase font-['DM_Sans'] hover:bg-[#D4952A] shadow-xl shadow-black/40 transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2"
+              className="px-8 py-4 rounded-full bg-[#3E9C14] text-[#F2F7E6] text-sm tracking-widest uppercase font-['DM_Sans'] hover:bg-[#9BE81E] shadow-xl shadow-black/40 transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2"
             >
               Book a Session <ArrowRight size={16} />
             </button>
             <button
               onClick={() => setPage("services")}
-              className="px-8 py-4 rounded-full border border-[rgba(212,149,42,0.5)] text-[#E8C060] text-sm tracking-widest uppercase font-['DM_Sans'] hover:border-[#E8C060] hover:bg-white/5 backdrop-blur transition-all flex items-center justify-center"
+              className="px-8 py-4 rounded-full border border-[rgba(163,230,53,0.5)] text-[#BFF747] text-sm tracking-widest uppercase font-['DM_Sans'] hover:border-[#BFF747] hover:bg-white/5 backdrop-blur transition-all flex items-center justify-center"
             >
               View Services
             </button>
           </div>
+          <p className="font-['Caveat'] font-semibold text-3xl text-[#BFF747] -rotate-2 mt-9 origin-left">
+            good vibes, great color — that's the whole business plan ☀
+          </p>
         </div>
       </section>
 
       {/* Stats strip */}
-      <section className="bg-[#1C0D00] border-t border-[rgba(212,149,42,0.2)]">
-        <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[rgba(212,149,42,0.15)]">
+      <section className="bg-[#06231B] border-t border-[rgba(163,230,53,0.2)]">
+        <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[rgba(163,230,53,0.15)]">
           {[
             { num: "22+", label: "Years open" },
             // EDIT 
@@ -339,47 +376,52 @@ function HeroPage({ setPage }: { setPage: (p: Page) => void }) {
             { num: "6", label: "Unique services" },
           ].map((s) => (
             <div key={s.label} className="py-8 px-6 text-center">
-              <div className="font-['Playfair_Display'] text-3xl text-[#E8C060] mb-1">{s.num}</div>
-              <div className="font-['DM_Sans'] text-xs tracking-widest uppercase text-[#7A5530]">{s.label}</div>
+              <div className="font-['Shrikhand'] text-3xl text-[#BFF747] mb-1">{s.num}</div>
+              <div className="font-['DM_Sans'] text-xs tracking-widest uppercase text-[#55705A]">{s.label}</div>
             </div>
           ))}
         </div>
       </section>
 
+      <MarqueeStrip />
+
       {/* Services teaser */}
       {/* EDIT -- this if advertising/selling single beds */} 
-      <section className="bg-[#FBF3E8] py-24 px-6 md:px-20">
+      <section className="bg-[#F2F7E6] py-24 px-6 md:px-20">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
             <div>
-              <p className="text-[#B86820] text-xs tracking-[0.35em] uppercase font-['DM_Sans'] mb-3">What we offer</p>
-              <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-[#1C0D00] italic">
-                Crafted for your glow.
+              <p className="text-[#3E9C14] text-xs tracking-[0.35em] uppercase font-['DM_Sans'] mb-3">What we offer</p>
+              <h2 className="font-['Shrikhand'] text-4xl md:text-5xl text-[#06231B] italic">
+                Pick your glow.
               </h2>
             </div>
+            <p className="font-['Caveat'] font-semibold text-3xl text-[#3E9C14] -rotate-2 self-start md:self-auto origin-left">
+              yes, the spray tan really is streak-free →
+            </p>
             <button
               onClick={() => setPage("services")}
-              className="self-start md:self-auto flex items-center gap-2 text-[#B86820] text-sm tracking-widest uppercase font-['DM_Sans'] hover:gap-4 transition-all"
+              className="self-start md:self-auto flex items-center gap-2 text-[#3E9C14] text-sm tracking-widest uppercase font-['DM_Sans'] hover:gap-4 transition-all"
             >
               All services <ArrowRight size={14} />
             </button>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {SERVICES.slice(0, 3).map((s) => (
-              <div key={s.id} className="bg-[#FFF8EE] rounded-3xl p-6 shadow-sm ring-1 ring-[#B86820]/10 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group overflow-hidden">
-                <div className="h-44 mb-6 overflow-hidden rounded-2xl bg-[#E8D5B5]">
+            {SERVICES.slice(0, 3).map((s, i) => (
+              <div key={s.id} className={`bg-[#FBFDF4] rounded-3xl p-6 shadow-sm ring-1 ring-[#3E9C14]/10 hover:shadow-xl hover:-translate-y-1 hover:rotate-0 transition-all duration-300 group overflow-hidden ${i % 2 === 0 ? "md:-rotate-[0.6deg]" : "md:rotate-[0.6deg]"}`}>
+                <div className="h-44 mb-6 overflow-hidden rounded-2xl bg-[#D9EDBE]">
                   <img
                     src={s.image}
                     alt={s.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <p className="text-[#B86820] text-xs tracking-widest uppercase font-['DM_Sans'] mb-2">{s.tagline}</p>
-                <h3 className="font-['Playfair_Display'] text-2xl text-[#1C0D00] italic mb-3">{s.name}</h3>
-                <p className="text-[#7A5530] font-['DM_Sans'] text-sm leading-relaxed mb-4">{s.description}</p>
+                <p className="text-[#3E9C14] text-xs tracking-widest uppercase font-['DM_Sans'] mb-2">{s.tagline}</p>
+                <h3 className="font-['Shrikhand'] text-2xl text-[#06231B] italic mb-3">{s.name}</h3>
+                <p className="text-[#55705A] font-['DM_Sans'] text-sm leading-relaxed mb-4">{s.description}</p>
                 <div className="flex items-center justify-between">
-                  <span className="font-['Playfair_Display'] text-2xl text-[#B86820]">${s.price}</span>
-                  <span className="text-[#C8A87A] font-['DM_Sans'] text-xs">{s.duration}</span>
+                  <span className="font-['Shrikhand'] text-2xl text-[#3E9C14]">${s.price}</span>
+                  <span className="text-[#8FAE94] font-['DM_Sans'] text-xs">{s.duration}</span>
                 </div>
               </div>
             ))}
@@ -388,10 +430,10 @@ function HeroPage({ setPage }: { setPage: (p: Page) => void }) {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-[#1C0D00] py-24 px-6 md:px-20">
+      <section className="bg-[#06231B] py-24 px-6 md:px-20">
         <div className="max-w-6xl mx-auto">
-          <p className="text-[#D4952A] text-xs tracking-[0.35em] uppercase font-['DM_Sans'] mb-3 text-center">What our clients say</p>
-          <h2 className="font-['Playfair_Display'] text-4xl text-[#FBF3E8] italic text-center mb-16">
+          <p className="text-[#9BE81E] text-xs tracking-[0.35em] uppercase font-['DM_Sans'] mb-3 text-center">What our clients say</p>
+          <h2 className="font-['Shrikhand'] text-4xl text-[#F2F7E6] italic text-center mb-16">
             Glowing reviews.
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -400,14 +442,14 @@ function HeroPage({ setPage }: { setPage: (p: Page) => void }) {
               { name: "James W.", rating: 5, text: "Spray tan is flawless — no streaks, no orange, just the most natural colour I've ever had. Marco is an artist." },
               { name: "Elise M.", rating: 5, text: "The Glow Package pays for itself after two visits. Plus the studio is stunning. Feels like a luxury spa, not a tanning salon." },
             ].map((t) => (
-              <div key={t.name} className="border border-[rgba(212,149,42,0.2)] bg-white/[0.03] rounded-3xl p-8 hover:border-[rgba(212,149,42,0.45)] hover:bg-white/[0.05] transition-all duration-300">
+              <div key={t.name} className="border border-[rgba(163,230,53,0.2)] bg-white/[0.03] rounded-3xl p-8 hover:border-[rgba(163,230,53,0.45)] hover:bg-white/[0.05] transition-all duration-300">
                 <div className="flex gap-1 mb-4">
                   {Array.from({ length: t.rating }).map((_, i) => (
-                    <Star key={i} size={14} fill="#E8C060" stroke="none" />
+                    <Star key={i} size={14} fill="#BFF747" stroke="none" />
                   ))}
                 </div>
-                <p className="text-[#C8A87A] font-['DM_Sans'] text-sm leading-relaxed mb-6 italic">"{t.text}"</p>
-                <p className="text-[#E8C060] font-['Playfair_Display'] text-lg">{t.name}</p>
+                <p className="text-[#8FAE94] font-['DM_Sans'] text-sm leading-relaxed mb-6 italic">"{t.text}"</p>
+                <p className="text-[#BFF747] font-['Shrikhand'] text-lg">{t.name}</p>
               </div>
             ))}
           </div>
@@ -416,19 +458,22 @@ function HeroPage({ setPage }: { setPage: (p: Page) => void }) {
 
       {/* CTA Banner */}
       <section
-        className="relative py-32 px-6 md:px-20 overflow-hidden bg-[#B86820]"
-        style={{ background: "linear-gradient(135deg, #8B4513 0%, #C8792A 50%, #E8A83A 100%)" }}
+        className="relative py-32 px-6 md:px-20 overflow-hidden bg-[#3E9C14]"
+        style={{ background: "linear-gradient(135deg, #16A34A 0%, #4ADE80 50%, #A3E635 100%)" }}
       >
         <div className="relative z-10 text-center max-w-2xl mx-auto">
-          <h2 className="font-['Playfair_Display'] text-4xl md:text-6xl text-[#1C0D00] italic font-bold mb-6">
+          <h2 className="font-['Shrikhand'] text-4xl md:text-6xl text-[#06231B] italic font-bold mb-6">
             Ready to radiate?
           </h2>
-          <p className="text-[#3D1800] font-['DM_Sans'] mb-10 text-lg">
+          <p className="text-[#07301F] font-['DM_Sans'] mb-4 text-lg">
             Your perfect tan is one booking away. Sessions available 7 days a week.
+          </p>
+          <p className="font-['Caveat'] font-bold text-3xl text-[#07301F] rotate-2 mb-8">
+            you know you want to ☀
           </p>
           <button
             onClick={() => setPage("booking")}
-            className="px-10 py-4 rounded-full bg-[#1C0D00] text-[#E8C060] text-sm tracking-widest uppercase font-['DM_Sans'] hover:bg-[#2E1800] shadow-xl shadow-black/25 transition-all hover:-translate-y-0.5 flex items-center gap-2 mx-auto"
+            className="px-10 py-4 rounded-full bg-[#06231B] text-[#BFF747] text-sm tracking-widest uppercase font-['DM_Sans'] hover:bg-[#0D4430] shadow-xl shadow-black/25 transition-all hover:-translate-y-0.5 flex items-center gap-2 mx-auto"
           >
             Book Now <ArrowRight size={16} />
           </button>
@@ -436,45 +481,45 @@ function HeroPage({ setPage }: { setPage: (p: Page) => void }) {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#100600] py-16 px-6 md:px-20 border-t border-[rgba(212,149,42,0.15)]">
+      <footer className="bg-[#031A12] py-16 px-6 md:px-20 border-t border-[rgba(163,230,53,0.15)]">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
           <div>
-            <div className="flex items-center gap-2 text-[#E8C060] font-['Playfair_Display'] italic text-xl mb-4">
+            <div className="flex items-center gap-2 text-[#BFF747] font-['Shrikhand'] italic text-xl mb-4">
               <Sun size={18} strokeWidth={1.5} /> Electric Sun Tanning
             </div>
-            <p className="text-[#7A5530] font-['DM_Sans'] text-sm leading-relaxed">
-              Premium tanning studio in the heart of the city. Glow on your terms.
+            <p className="text-[#55705A] font-['DM_Sans'] text-sm leading-relaxed">
+              Your neighborhood glow spot in Caldwell, Idaho. Good vibes, great color, zero fuss.
             </p>
           </div>
           <div>
-            <p className="text-[#E8C060] font-['DM_Sans'] text-xs tracking-widest uppercase mb-4">Studio</p>
+            <p className="text-[#BFF747] font-['DM_Sans'] text-xs tracking-widest uppercase mb-4">Studio</p>
             <div className="flex flex-col gap-2">
               {["Services", "About Us", "News", "Contact"].map((l) => (
-                <span key={l} className="text-[#7A5530] font-['DM_Sans'] text-sm hover:text-[#C8A87A] cursor-pointer transition-colors">{l}</span>
+                <span key={l} className="text-[#55705A] font-['DM_Sans'] text-sm hover:text-[#8FAE94] cursor-pointer transition-colors">{l}</span>
               ))}
             </div>
           </div>
           <div>
-            <p className="text-[#E8C060] font-['DM_Sans'] text-xs tracking-widest uppercase mb-4">Hours</p>
-            <div className="text-[#7A5530] font-['DM_Sans'] text-sm space-y-1">
+            <p className="text-[#BFF747] font-['DM_Sans'] text-xs tracking-widest uppercase mb-4">Hours</p>
+            <div className="text-[#55705A] font-['DM_Sans'] text-sm space-y-1">
               <p>Mon–Fri: 9:00 AM – 8:00 PM</p>
               <p>Saturday: 10:00 AM – 4:00 PM</p>
               <p>Sunday: Closed</p>
             </div>
           </div>
           <div>
-            <p className="text-[#E8C060] font-['DM_Sans'] text-xs tracking-widest uppercase mb-4">Find Us</p>
-            <div className="text-[#7A5530] font-['DM_Sans'] text-sm space-y-2">
+            <p className="text-[#BFF747] font-['DM_Sans'] text-xs tracking-widest uppercase mb-4">Find Us</p>
+            <div className="text-[#55705A] font-['DM_Sans'] text-sm space-y-2">
               <p className="flex items-start gap-2"><MapPin size={14} className="mt-0.5 shrink-0" />2713 Blaine Street Suite #100, Caldwell, Idaho 83605</p>
               <p className="flex items-center gap-2"><Phone size={14} /> +1 (208) 459-6565</p>
               <p className="flex items-center gap-2"><Mail size={14} /> hello@electricsuntanning.com</p>
             </div>
           </div>
         </div>
-        <div className="max-w-6xl mx-auto mt-12 pt-8 border-t border-[rgba(212,149,42,0.1)] flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[#3D2200] font-['DM_Sans'] text-xs">© 2026 Electric Sun tanning. All rights reserved.</p>
+        <div className="max-w-6xl mx-auto mt-12 pt-8 border-t border-[rgba(163,230,53,0.1)] flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-[#6FA287] font-['DM_Sans'] text-xs">© 2026 Electric Sun tanning. All rights reserved.</p>
           <div className="flex gap-4">
-            <a href="#" className="text-[#3D2200] hover:text-[#E8C060] transition-colors"><Instagram size={16} /></a>
+            <a href="#" className="text-[#6FA287] hover:text-[#BFF747] transition-colors"><Instagram size={16} /></a>
           </div>
         </div>
       </footer>
@@ -484,22 +529,25 @@ function HeroPage({ setPage }: { setPage: (p: Page) => void }) {
 
 function ServicesPage({ setPage }: { setPage: (p: Page) => void }) {
   return (
-    <div className="min-h-screen bg-[#FBF3E8]">
+    <div className="min-h-screen bg-[#F2F7E6]">
       {/* Header */}
-      <div className="bg-[#1C0D00] pt-32 pb-20 px-6 md:px-20">
+      <div className="bg-[#06231B] pt-32 pb-20 px-6 md:px-20">
         <div className="max-w-3xl">
-          <p className="text-[#D4952A] text-xs tracking-[0.35em] uppercase font-['DM_Sans'] mb-4">What we offer</p>
-          <h1 className="font-['Playfair_Display'] text-5xl md:text-7xl text-[#FBF3E8] italic font-bold leading-tight">
-            Every shade<br />of golden.
+          <p className="text-[#9BE81E] text-xs tracking-[0.35em] uppercase font-['DM_Sans'] mb-4">What we offer</p>
+          <h1 className="font-['Shrikhand'] text-5xl md:text-7xl text-[#F2F7E6] italic font-bold leading-tight">
+            Every shade<br />of glow.
           </h1>
         </div>
       </div>
 
       <div className="max-w-6xl mx-auto px-6 md:px-20 py-20">
+        <p className="font-['Caveat'] font-semibold text-3xl text-[#3E9C14] -rotate-1 mb-10 origin-left">
+          the good stuff's all below ↓ no upsell, promise
+        </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {SERVICES.map((s) => (
-            <div key={s.id} className="bg-[#FFF8EE] rounded-3xl overflow-hidden shadow-sm ring-1 ring-[#B86820]/10 hover:shadow-xl transition-all duration-300 group">
-              <div className="h-56 overflow-hidden bg-[#E8D5B5]">
+          {SERVICES.map((s, i) => (
+            <div key={s.id} className={`bg-[#FBFDF4] rounded-3xl overflow-hidden shadow-sm ring-1 ring-[#3E9C14]/10 hover:shadow-xl hover:rotate-0 transition-all duration-300 group ${i % 2 === 0 ? "md:-rotate-[0.5deg]" : "md:rotate-[0.5deg]"}`}>
+              <div className="h-56 overflow-hidden bg-[#D9EDBE]">
                 <img
                   src={s.image}
                   alt={s.name}
@@ -509,26 +557,26 @@ function ServicesPage({ setPage }: { setPage: (p: Page) => void }) {
               <div className="p-8">
                 <div className="flex items-start justify-between mb-3">
                   <div>
-                    <p className="text-[#B86820] text-xs tracking-widest uppercase font-['DM_Sans'] mb-1">{s.tagline}</p>
-                    <h3 className="font-['Playfair_Display'] text-3xl text-[#1C0D00] italic">{s.name}</h3>
+                    <p className="text-[#3E9C14] text-xs tracking-widest uppercase font-['DM_Sans'] mb-1">{s.tagline}</p>
+                    <h3 className="font-['Shrikhand'] text-3xl text-[#06231B] italic">{s.name}</h3>
                   </div>
                   <div className="text-right">
-                    <div className="font-['Playfair_Display'] text-3xl text-[#B86820]">${s.price}</div>
-                    <div className="text-[#C8A87A] font-['DM_Sans'] text-xs">{s.duration}</div>
+                    <div className="font-['Shrikhand'] text-3xl text-[#3E9C14]">${s.price}</div>
+                    <div className="text-[#8FAE94] font-['DM_Sans'] text-xs">{s.duration}</div>
                   </div>
                 </div>
-                <p className="text-[#7A5530] font-['DM_Sans'] text-sm leading-relaxed mb-6">{s.description}</p>
+                <p className="text-[#55705A] font-['DM_Sans'] text-sm leading-relaxed mb-6">{s.description}</p>
                 <ul className="space-y-2 mb-8">
                   {s.features.map((f) => (
-                    <li key={f} className="flex items-center gap-2 text-[#1C0D00] font-['DM_Sans'] text-sm">
-                      <Check size={14} className="text-[#B86820] shrink-0" />
+                    <li key={f} className="flex items-center gap-2 text-[#06231B] font-['DM_Sans'] text-sm">
+                      <Check size={14} className="text-[#3E9C14] shrink-0" />
                       {f}
                     </li>
                   ))}
                 </ul>
                 <button
                   onClick={() => setPage("booking")}
-                  className="w-full py-3.5 rounded-full bg-[#1C0D00] text-[#E8C060] text-xs tracking-widest uppercase font-['DM_Sans'] hover:bg-[#B86820] hover:text-[#FBF3E8] transition-all"
+                  className="w-full py-3.5 rounded-full bg-[#06231B] text-[#BFF747] text-xs tracking-widest uppercase font-['DM_Sans'] hover:bg-[#3E9C14] hover:text-[#F2F7E6] transition-all"
                 >
                   Book {s.name}
                 </button>
@@ -559,37 +607,37 @@ function BookingPage() {
 
   if (confirmed && step === 4) {
     return (
-      <div className="min-h-screen bg-[#1C0D00] flex items-center justify-center px-6">
+      <div className="min-h-screen bg-[#06231B] flex items-center justify-center px-6">
         <div className="text-center max-w-md">
-          <div className="w-16 h-16 rounded-full bg-[#B86820] flex items-center justify-center mx-auto mb-8">
-            <Check size={32} className="text-[#FBF3E8]" />
+          <div className="w-16 h-16 rounded-full bg-[#3E9C14] flex items-center justify-center mx-auto mb-8">
+            <Check size={32} className="text-[#F2F7E6]" />
           </div>
-          <p className="text-[#D4952A] text-xs tracking-[0.35em] uppercase font-['DM_Sans'] mb-4">Booking confirmed</p>
-          <h2 className="font-['Playfair_Display'] text-5xl text-[#FBF3E8] italic mb-6">
+          <p className="text-[#9BE81E] text-xs tracking-[0.35em] uppercase font-['DM_Sans'] mb-4">Booking confirmed</p>
+          <h2 className="font-['Shrikhand'] text-5xl text-[#F2F7E6] italic mb-6">
             See you soon, {form.name.split(" ")[0]}.
           </h2>
-          <div className="border border-[rgba(212,149,42,0.25)] rounded-3xl bg-white/[0.03] p-6 mb-8 text-left space-y-3">
-            <p className="text-[#C8A87A] font-['DM_Sans'] text-sm flex justify-between">
-              <span className="text-[#7A5530]">Service</span> {selected?.name}
+          <div className="border border-[rgba(163,230,53,0.25)] rounded-3xl bg-white/[0.03] p-6 mb-8 text-left space-y-3">
+            <p className="text-[#8FAE94] font-['DM_Sans'] text-sm flex justify-between">
+              <span className="text-[#55705A]">Service</span> {selected?.name}
             </p>
-            <p className="text-[#C8A87A] font-['DM_Sans'] text-sm flex justify-between">
-              <span className="text-[#7A5530]">Date</span> {date}
+            <p className="text-[#8FAE94] font-['DM_Sans'] text-sm flex justify-between">
+              <span className="text-[#55705A]">Date</span> {date}
             </p>
-            <p className="text-[#C8A87A] font-['DM_Sans'] text-sm flex justify-between">
-              <span className="text-[#7A5530]">Time</span> {time}
+            <p className="text-[#8FAE94] font-['DM_Sans'] text-sm flex justify-between">
+              <span className="text-[#55705A]">Time</span> {time}
             </p>
-            <p className="text-[#C8A87A] font-['DM_Sans'] text-sm flex justify-between border-t border-[rgba(212,149,42,0.2)] pt-3">
-              <span className="text-[#7A5530]">Total</span>
-              <span className="text-[#E8C060] font-['Playfair_Display'] text-lg">${selected?.price}</span>
+            <p className="text-[#8FAE94] font-['DM_Sans'] text-sm flex justify-between border-t border-[rgba(163,230,53,0.2)] pt-3">
+              <span className="text-[#55705A]">Total</span>
+              <span className="text-[#BFF747] font-['Shrikhand'] text-lg">${selected?.price}</span>
             </p>
           </div>
-          <p className="text-[#7A5530] font-['DM_Sans'] text-sm mb-8">
+          <p className="text-[#55705A] font-['DM_Sans'] text-sm mb-8">
             {/* EDIT - CHANGE THE FORMAT FOR THE DATE */}
             A confirmation has been sent to {form.email}. We look forward to seeing you at {time} on {date}.
           </p>
           <button
             onClick={() => { setStep(1); setSelected(null); setDate(""); setTime(""); setForm({ name: "", email: "", phone: "", notes: "" }); setConfirmed(false); }}
-            className="px-8 py-3 rounded-full border border-[rgba(212,149,42,0.4)] text-[#E8C060] text-xs tracking-widest uppercase font-['DM_Sans'] hover:border-[#E8C060] hover:bg-white/5 transition-all"
+            className="px-8 py-3 rounded-full border border-[rgba(163,230,53,0.4)] text-[#BFF747] text-xs tracking-widest uppercase font-['DM_Sans'] hover:border-[#BFF747] hover:bg-white/5 transition-all"
           >
             Book another
           </button>
@@ -599,30 +647,30 @@ function BookingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FBF3E8]">
-      <div className="bg-[#1C0D00] pt-32 pb-16 px-6 md:px-20">
-        <p className="text-[#D4952A] text-xs tracking-[0.35em] uppercase font-['DM_Sans'] mb-4">Reserve your session</p>
-        <h1 className="font-['Playfair_Display'] text-5xl text-[#FBF3E8] italic">Book your glow.</h1>
+    <div className="min-h-screen bg-[#F2F7E6]">
+      <div className="bg-[#06231B] pt-32 pb-16 px-6 md:px-20">
+        <p className="text-[#9BE81E] text-xs tracking-[0.35em] uppercase font-['DM_Sans'] mb-4">Reserve your session</p>
+        <h1 className="font-['Shrikhand'] text-5xl text-[#F2F7E6] italic">Book your glow.</h1>
       </div>
 
       {/* Step indicator */}
-      <div className="bg-[#1C0D00] border-t border-[rgba(212,149,42,0.15)] px-6 md:px-20 pb-8">
+      <div className="bg-[#06231B] border-t border-[rgba(163,230,53,0.15)] px-6 md:px-20 pb-8">
         <div className="flex gap-8 max-w-xl">
           {["Choose Service", "Date & Time", "Your Details"].map((label, i) => (
             <button
               key={label}
               onClick={() => i + 1 < step && setStep(i + 1)}
               className={`flex items-center gap-2 font-['DM_Sans'] text-xs tracking-widest uppercase transition-colors ${
-                step === i + 1 ? "text-[#E8C060]" : step > i + 1 ? "text-[#7A5530] cursor-pointer hover:text-[#C8A87A]" : "text-[#3D2200]"
+                step === i + 1 ? "text-[#BFF747]" : step > i + 1 ? "text-[#55705A] cursor-pointer hover:text-[#8FAE94]" : "text-[#6FA287]"
               }`}
             >
               <span
                 className={`w-7 h-7 rounded-full flex items-center justify-center text-[11px] border ${
                   step > i + 1
-                    ? "border-[#B86820] bg-[#B86820] text-[#FBF3E8]"
+                    ? "border-[#3E9C14] bg-[#3E9C14] text-[#F2F7E6]"
                     : step === i + 1
-                    ? "border-[#E8C060] text-[#E8C060]"
-                    : "border-[#3D2200] text-[#3D2200]"
+                    ? "border-[#BFF747] text-[#BFF747]"
+                    : "border-[#6FA287] text-[#6FA287]"
                 }`}
               >
                 {step > i + 1 ? <Check size={10} /> : i + 1}
@@ -637,7 +685,7 @@ function BookingPage() {
         {/* Step 1: Choose service */}
         {step === 1 && (
           <div>
-            <h2 className="font-['Playfair_Display'] text-3xl text-[#1C0D00] italic mb-8">Select a service</h2>
+            <h2 className="font-['Shrikhand'] text-3xl text-[#06231B] italic mb-8">Select a service</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {SERVICES.map((s) => (
                 <button
@@ -645,21 +693,21 @@ function BookingPage() {
                   onClick={() => { setSelected(s); setStep(2); }}
                   className={`text-left p-6 rounded-3xl border shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 ${
                     selected?.id === s.id
-                      ? "border-[#B86820] bg-[#FFF8EE] ring-2 ring-[#B86820]/30"
-                      : "border-[rgba(184,104,32,0.2)] bg-[#FFF8EE] hover:border-[#B86820]"
+                      ? "border-[#3E9C14] bg-[#FBFDF4] ring-2 ring-[#3E9C14]/30"
+                      : "border-[rgba(62,156,20,0.2)] bg-[#FBFDF4] hover:border-[#3E9C14]"
                   }`}
                 >
                   <div className="flex justify-between items-start mb-2">
                     <div>
-                      <p className="text-[#B86820] text-xs tracking-widest uppercase font-['DM_Sans'] mb-1">{s.tagline}</p>
-                      <h3 className="font-['Playfair_Display'] text-xl text-[#1C0D00] italic">{s.name}</h3>
+                      <p className="text-[#3E9C14] text-xs tracking-widest uppercase font-['DM_Sans'] mb-1">{s.tagline}</p>
+                      <h3 className="font-['Shrikhand'] text-xl text-[#06231B] italic">{s.name}</h3>
                     </div>
                     <div className="text-right">
-                      <div className="font-['Playfair_Display'] text-2xl text-[#B86820]">${s.price}</div>
-                      <div className="text-[#C8A87A] font-['DM_Sans'] text-xs">{s.duration}</div>
+                      <div className="font-['Shrikhand'] text-2xl text-[#3E9C14]">${s.price}</div>
+                      <div className="text-[#8FAE94] font-['DM_Sans'] text-xs">{s.duration}</div>
                     </div>
                   </div>
-                  <p className="text-[#7A5530] font-['DM_Sans'] text-sm leading-relaxed">{s.description}</p>
+                  <p className="text-[#55705A] font-['DM_Sans'] text-sm leading-relaxed">{s.description}</p>
                 </button>
               ))}
             </div>
@@ -669,23 +717,23 @@ function BookingPage() {
         {/* Step 2: Date & Time */}
         {step === 2 && (
           <div>
-            <h2 className="font-['Playfair_Display'] text-3xl text-[#1C0D00] italic mb-2">Choose a date & time</h2>
-            <p className="text-[#7A5530] font-['DM_Sans'] text-sm mb-8">
-              Booking: <span className="text-[#B86820]">{selected?.name}</span> — ${selected?.price}
+            <h2 className="font-['Shrikhand'] text-3xl text-[#06231B] italic mb-2">Choose a date & time</h2>
+            <p className="text-[#55705A] font-['DM_Sans'] text-sm mb-8">
+              Booking: <span className="text-[#3E9C14]">{selected?.name}</span> — ${selected?.price}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <label className="block text-[#1C0D00] font-['DM_Sans'] text-xs tracking-widest uppercase mb-3">Date</label>
+                <label className="block text-[#06231B] font-['DM_Sans'] text-xs tracking-widest uppercase mb-3">Date</label>
                 <input
                   type="date"
                   min={today}
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="w-full bg-[#FFF8EE] border border-[rgba(184,104,32,0.3)] rounded-xl px-4 py-3 font-['DM_Sans'] text-[#1C0D00] focus:outline-none focus:border-[#B86820] focus:ring-2 focus:ring-[#B86820]/25 transition-shadow"
+                  className="w-full bg-[#FBFDF4] border border-[rgba(62,156,20,0.3)] rounded-xl px-4 py-3 font-['DM_Sans'] text-[#06231B] focus:outline-none focus:border-[#3E9C14] focus:ring-2 focus:ring-[#3E9C14]/25 transition-shadow"
                 />
               </div>
               <div>
-                <label className="block text-[#1C0D00] font-['DM_Sans'] text-xs tracking-widest uppercase mb-3">Available Times</label>
+                <label className="block text-[#06231B] font-['DM_Sans'] text-xs tracking-widest uppercase mb-3">Available Times</label>
                 <div className="grid grid-cols-2 gap-2">
                   {TIMES.map((t) => (
                     <button
@@ -693,8 +741,8 @@ function BookingPage() {
                       onClick={() => setTime(t)}
                       className={`py-2.5 px-4 rounded-full border text-sm font-['DM_Sans'] transition-all ${
                         time === t
-                          ? "border-[#B86820] bg-[#B86820] text-[#FBF3E8]"
-                          : "border-[rgba(184,104,32,0.3)] text-[#1C0D00] hover:border-[#B86820]"
+                          ? "border-[#3E9C14] bg-[#3E9C14] text-[#F2F7E6]"
+                          : "border-[rgba(62,156,20,0.3)] text-[#06231B] hover:border-[#3E9C14]"
                       }`}
                     >
                       {t}
@@ -704,13 +752,13 @@ function BookingPage() {
               </div>
             </div>
             <div className="flex gap-4 mt-10">
-              <button onClick={() => setStep(1)} className="flex items-center gap-2 px-6 py-3 rounded-full border border-[rgba(184,104,32,0.3)] text-[#7A5530] text-xs tracking-widest uppercase font-['DM_Sans'] hover:border-[#B86820] transition-colors">
+              <button onClick={() => setStep(1)} className="flex items-center gap-2 px-6 py-3 rounded-full border border-[rgba(62,156,20,0.3)] text-[#55705A] text-xs tracking-widest uppercase font-['DM_Sans'] hover:border-[#3E9C14] transition-colors">
                 <ChevronLeft size={14} /> Back
               </button>
               <button
                 onClick={() => date && time && setStep(3)}
                 disabled={!date || !time}
-                className="flex items-center gap-2 px-8 py-3 rounded-full bg-[#B86820] text-[#FBF3E8] text-xs tracking-widest uppercase font-['DM_Sans'] hover:bg-[#D4952A] shadow-md shadow-[#B86820]/25 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                className="flex items-center gap-2 px-8 py-3 rounded-full bg-[#3E9C14] text-[#F2F7E6] text-xs tracking-widest uppercase font-['DM_Sans'] hover:bg-[#9BE81E] shadow-md shadow-[#3E9C14]/25 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 Continue <ChevronRight size={14} />
               </button>
@@ -721,8 +769,8 @@ function BookingPage() {
         {/* Step 3: Details */}
         {step === 3 && (
           <div>
-            <h2 className="font-['Playfair_Display'] text-3xl text-[#1C0D00] italic mb-2">Your details</h2>
-            <p className="text-[#7A5530] font-['DM_Sans'] text-sm mb-8">
+            <h2 className="font-['Shrikhand'] text-3xl text-[#06231B] italic mb-2">Your details</h2>
+            <p className="text-[#55705A] font-['DM_Sans'] text-sm mb-8">
               {selected?.name} · {date} · {time}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -732,50 +780,50 @@ function BookingPage() {
                 { key: "phone", label: "Phone (optional)", type: "tel", placeholder: "+1 (555) 000-0000" },
               ].map((f) => (
                 <div key={f.key}>
-                  <label className="block text-[#1C0D00] font-['DM_Sans'] text-xs tracking-widest uppercase mb-2">{f.label}</label>
+                  <label className="block text-[#06231B] font-['DM_Sans'] text-xs tracking-widest uppercase mb-2">{f.label}</label>
                   <input
                     type={f.type}
                     placeholder={f.placeholder}
                     value={form[f.key as keyof typeof form]}
                     onChange={(e) => setForm({ ...form, [f.key]: e.target.value })}
-                    className="w-full bg-[#FFF8EE] border border-[rgba(184,104,32,0.3)] rounded-xl px-4 py-3 font-['DM_Sans'] text-[#1C0D00] placeholder:text-[#C8A87A] focus:outline-none focus:border-[#B86820] focus:ring-2 focus:ring-[#B86820]/25 transition-shadow"
+                    className="w-full bg-[#FBFDF4] border border-[rgba(62,156,20,0.3)] rounded-xl px-4 py-3 font-['DM_Sans'] text-[#06231B] placeholder:text-[#8FAE94] focus:outline-none focus:border-[#3E9C14] focus:ring-2 focus:ring-[#3E9C14]/25 transition-shadow"
                   />
                 </div>
               ))}
               <div className="md:col-span-2">
-                <label className="block text-[#1C0D00] font-['DM_Sans'] text-xs tracking-widest uppercase mb-2">Notes (optional)</label>
+                <label className="block text-[#06231B] font-['DM_Sans'] text-xs tracking-widest uppercase mb-2">Notes (optional)</label>
                 <textarea
                   rows={3}
                   placeholder="Any skin sensitivities, preferences, or questions..."
                   value={form.notes}
                   onChange={(e) => setForm({ ...form, notes: e.target.value })}
-                  className="w-full bg-[#FFF8EE] border border-[rgba(184,104,32,0.3)] rounded-xl px-4 py-3 font-['DM_Sans'] text-[#1C0D00] placeholder:text-[#C8A87A] focus:outline-none focus:border-[#B86820] focus:ring-2 focus:ring-[#B86820]/25 transition-shadow resize-none"
+                  className="w-full bg-[#FBFDF4] border border-[rgba(62,156,20,0.3)] rounded-xl px-4 py-3 font-['DM_Sans'] text-[#06231B] placeholder:text-[#8FAE94] focus:outline-none focus:border-[#3E9C14] focus:ring-2 focus:ring-[#3E9C14]/25 transition-shadow resize-none"
                 />
               </div>
             </div>
 
             {/* Order summary */}
-            <div className="border border-[rgba(184,104,32,0.2)] rounded-3xl shadow-sm p-6 mb-8 bg-[#FFF8EE]">
-              <p className="text-[#B86820] text-xs tracking-widest uppercase font-['DM_Sans'] mb-4">Order Summary</p>
+            <div className="border-2 border-dashed border-[rgba(62,156,20,0.4)] rounded-3xl shadow-sm p-6 mb-8 bg-[#FBFDF4]">
+              <p className="text-[#3E9C14] text-xs tracking-widest uppercase font-['DM_Sans'] mb-4">Order Summary</p>
               <div className="space-y-2 text-sm font-['DM_Sans']">
-                <div className="flex justify-between text-[#7A5530]"><span>Service</span><span className="text-[#1C0D00]">{selected?.name}</span></div>
-                <div className="flex justify-between text-[#7A5530]"><span>Date</span><span className="text-[#1C0D00]">{date}</span></div>
-                <div className="flex justify-between text-[#7A5530]"><span>Time</span><span className="text-[#1C0D00]">{time}</span></div>
-                <div className="flex justify-between border-t border-[rgba(184,104,32,0.2)] pt-3 mt-3">
-                  <span className="text-[#7A5530]">Total</span>
-                  <span className="font-['Playfair_Display'] text-2xl text-[#B86820]">${selected?.price}</span>
+                <div className="flex justify-between text-[#55705A]"><span>Service</span><span className="text-[#06231B]">{selected?.name}</span></div>
+                <div className="flex justify-between text-[#55705A]"><span>Date</span><span className="text-[#06231B]">{date}</span></div>
+                <div className="flex justify-between text-[#55705A]"><span>Time</span><span className="text-[#06231B]">{time}</span></div>
+                <div className="flex justify-between border-t border-[rgba(62,156,20,0.2)] pt-3 mt-3">
+                  <span className="text-[#55705A]">Total</span>
+                  <span className="font-['Shrikhand'] text-2xl text-[#3E9C14]">${selected?.price}</span>
                 </div>
               </div>
             </div>
 
             <div className="flex gap-4">
-              <button onClick={() => setStep(2)} className="flex items-center gap-2 px-6 py-3 rounded-full border border-[rgba(184,104,32,0.3)] text-[#7A5530] text-xs tracking-widest uppercase font-['DM_Sans'] hover:border-[#B86820] transition-colors">
+              <button onClick={() => setStep(2)} className="flex items-center gap-2 px-6 py-3 rounded-full border border-[rgba(62,156,20,0.3)] text-[#55705A] text-xs tracking-widest uppercase font-['DM_Sans'] hover:border-[#3E9C14] transition-colors">
                 <ChevronLeft size={14} /> Back
               </button>
               <button
                 onClick={handleConfirm}
                 disabled={!form.name || !form.email}
-                className="flex items-center gap-2 px-8 py-3 rounded-full bg-[#B86820] text-[#FBF3E8] text-xs tracking-widest uppercase font-['DM_Sans'] hover:bg-[#D4952A] shadow-md shadow-[#B86820]/25 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                className="flex items-center gap-2 px-8 py-3 rounded-full bg-[#3E9C14] text-[#F2F7E6] text-xs tracking-widest uppercase font-['DM_Sans'] hover:bg-[#9BE81E] shadow-md shadow-[#3E9C14]/25 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 Confirm Booking <Check size={14} />
               </button>
@@ -789,14 +837,14 @@ function BookingPage() {
 
 function AboutPage() {
   return (
-    <div className="min-h-screen bg-[#FBF3E8]">
-      <div className="bg-[#1C0D00] pt-32 pb-20 px-6 md:px-20">
+    <div className="min-h-screen bg-[#F2F7E6]">
+      <div className="bg-[#06231B] pt-32 pb-20 px-6 md:px-20">
         <div className="max-w-4xl">
-          <p className="text-[#D4952A] text-xs tracking-[0.35em] uppercase font-['DM_Sans'] mb-4">Our story</p>
-          <h1 className="font-['Playfair_Display'] text-5xl md:text-7xl text-[#FBF3E8] italic font-bold leading-tight mb-8">
+          <p className="text-[#9BE81E] text-xs tracking-[0.35em] uppercase font-['DM_Sans'] mb-4">Our story</p>
+          <h1 className="font-['Shrikhand'] text-5xl md:text-7xl text-[#F2F7E6] italic font-bold leading-tight mb-8">
             Born from a<br />love of light.
           </h1>
-          <p className="text-[#C8A87A] font-['DM_Sans'] text-lg max-w-2xl leading-relaxed">
+          <p className="text-[#8FAE94] font-['DM_Sans'] text-lg max-w-2xl leading-relaxed">
             Electric Sun Tanning was founded in 2004. The current owner, NAME-EDIT, has been serving clients since September 2014. NAME-EDIT believes the tanning salon experience deserved the same care and intentionality as a five-star spa.
           </p>
         </div>
@@ -806,11 +854,11 @@ function AboutPage() {
       <section className="py-24 px-6 md:px-20">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div>
-            <p className="text-[#B86820] text-xs tracking-[0.35em] uppercase font-['DM_Sans'] mb-6">Our philosophy</p>
-            <h2 className="font-['Playfair_Display'] text-4xl text-[#1C0D00] italic mb-6">
+            <p className="text-[#3E9C14] text-xs tracking-[0.35em] uppercase font-['DM_Sans'] mb-6">Our philosophy</p>
+            <h2 className="font-['Shrikhand'] text-4xl text-[#06231B] italic mb-6">
               Radiance that respects your skin.
             </h2>
-            <div className="space-y-4 text-[#7A5530] font-['DM_Sans'] text-sm leading-relaxed">
+            <div className="space-y-4 text-[#55705A] font-['DM_Sans'] text-sm leading-relaxed">
               <p>
                 Too many tanning studios treat the session as a transaction. At Electric Sun Tanning, we take the time to understand your skin type, history, and goals — then build a personalised plan that gets you glowing safely and sustainably.
               </p>
@@ -822,35 +870,35 @@ function AboutPage() {
               </p>
             </div>
           </div>
-          <div className="relative h-[480px] bg-[#E8D5B5] overflow-hidden">
+          <div className="relative h-[480px] bg-[#D9EDBE] overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1761470575018-135c213340eb?w=700&h=500&fit=crop&auto=format"
               alt="Warm, amber-lit studio interior"
               className="w-full h-full object-cover"
             />
-            <div className="absolute bottom-6 left-6 bg-[#1C0D00] px-6 py-4">
-              <p className="text-[#E8C060] font-['Playfair_Display'] text-2xl italic">14 years</p>
-              <p className="text-[#7A5530] font-['DM_Sans'] text-xs tracking-widest uppercase">of radiance</p>
+            <div className="absolute bottom-6 left-6 bg-[#06231B] px-6 py-4">
+              <p className="text-[#BFF747] font-['Shrikhand'] text-2xl italic">14 years</p>
+              <p className="text-[#55705A] font-['DM_Sans'] text-xs tracking-widest uppercase">of radiance</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Values */}
-      <section className="bg-[#1C0D00] py-24 px-6 md:px-20">
+      <section className="bg-[#06231B] py-24 px-6 md:px-20">
         <div className="max-w-6xl mx-auto">
-          <p className="text-[#D4952A] text-xs tracking-[0.35em] uppercase font-['DM_Sans'] mb-4 text-center">What we stand for</p>
-          <h2 className="font-['Playfair_Display'] text-4xl text-[#FBF3E8] italic text-center mb-16">Our values.</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[rgba(212,149,42,0.15)]">
+          <p className="text-[#9BE81E] text-xs tracking-[0.35em] uppercase font-['DM_Sans'] mb-4 text-center">What we stand for</p>
+          <h2 className="font-['Shrikhand'] text-4xl text-[#F2F7E6] italic text-center mb-16">Our values.</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[rgba(163,230,53,0.15)]">
             {[
               { title: "Skin-first always", body: "We never push for more UV exposure than your skin needs. Our therapists are trained to guide you, not just sell you sessions." },
               { title: "Quality over quantity", body: "Six services, all exceptional. We resist the urge to offer everything and instead perfect what we do." },
               { title: "A space to feel good in", body: "The music, the lighting, the scent — every detail of the studio is considered so you feel the effect before you even step under the lamp." },
             ].map((v) => (
-              <div key={v.title} className="bg-[#1C0D00] p-10">
-                <div className="w-8 h-px bg-[#B86820] mb-6" />
-                <h3 className="font-['Playfair_Display'] text-2xl text-[#FBF3E8] italic mb-4">{v.title}</h3>
-                <p className="text-[#7A5530] font-['DM_Sans'] text-sm leading-relaxed">{v.body}</p>
+              <div key={v.title} className="bg-[#06231B] p-10">
+                <div className="w-8 h-px bg-[#3E9C14] mb-6" />
+                <h3 className="font-['Shrikhand'] text-2xl text-[#F2F7E6] italic mb-4">{v.title}</h3>
+                <p className="text-[#55705A] font-['DM_Sans'] text-sm leading-relaxed">{v.body}</p>
               </div>
             ))}
           </div>
@@ -860,21 +908,21 @@ function AboutPage() {
       {/* Team */}
       <section className="py-24 px-6 md:px-20">
         <div className="max-w-6xl mx-auto">
-          <p className="text-[#B86820] text-xs tracking-[0.35em] uppercase font-['DM_Sans'] mb-4">The people</p>
-          <h2 className="font-['Playfair_Display'] text-4xl text-[#1C0D00] italic mb-16">Meet the team.</h2>
+          <p className="text-[#3E9C14] text-xs tracking-[0.35em] uppercase font-['DM_Sans'] mb-4">The people</p>
+          <h2 className="font-['Shrikhand'] text-4xl text-[#06231B] italic mb-16">Meet the team.</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {TEAM.map((member) => (
               <div key={member.name}>
-                <div className="h-72 bg-[#E8D5B5] overflow-hidden mb-6">
+                <div className="h-72 bg-[#D9EDBE] overflow-hidden mb-6">
                   <img
                     src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover object-top"
                   />
                 </div>
-                <p className="text-[#B86820] text-xs tracking-widest uppercase font-['DM_Sans'] mb-1">{member.role}</p>
-                <h3 className="font-['Playfair_Display'] text-2xl text-[#1C0D00] italic mb-3">{member.name}</h3>
-                <p className="text-[#7A5530] font-['DM_Sans'] text-sm leading-relaxed">{member.bio}</p>
+                <p className="text-[#3E9C14] text-xs tracking-widest uppercase font-['DM_Sans'] mb-1">{member.role}</p>
+                <h3 className="font-['Shrikhand'] text-2xl text-[#06231B] italic mb-3">{member.name}</h3>
+                <p className="text-[#55705A] font-['DM_Sans'] text-sm leading-relaxed">{member.bio}</p>
               </div>
             ))}
           </div>
@@ -888,12 +936,12 @@ function NewsPage() {
   const [activePost, setActivePost] = useState<typeof INSTAGRAM_POSTS[0] | null>(null);
 
   return (
-    <div className="min-h-screen bg-[#FBF3E8]">
-      <div className="bg-[#1C0D00] pt-32 pb-20 px-6 md:px-20">
+    <div className="min-h-screen bg-[#F2F7E6]">
+      <div className="bg-[#06231B] pt-32 pb-20 px-6 md:px-20">
         <div className="flex items-end justify-between max-w-4xl">
           <div>
-            <p className="text-[#D4952A] text-xs tracking-[0.35em] uppercase font-['DM_Sans'] mb-4">From our feed</p>
-            <h1 className="font-['Playfair_Display'] text-5xl md:text-7xl text-[#FBF3E8] italic font-bold leading-tight">
+            <p className="text-[#9BE81E] text-xs tracking-[0.35em] uppercase font-['DM_Sans'] mb-4">From our feed</p>
+            <h1 className="font-['Shrikhand'] text-5xl md:text-7xl text-[#F2F7E6] italic font-bold leading-tight">
               Studio news &<br />inspiration.
             </h1>
           </div>
@@ -901,7 +949,7 @@ function NewsPage() {
             href="https://www.instagram.com/electricsuncaldwell/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:flex items-center gap-2 text-[#C8A87A] font-['DM_Sans'] text-xs tracking-widest uppercase hover:text-[#E8C060] transition-colors"
+            className="hidden md:flex items-center gap-2 text-[#8FAE94] font-['DM_Sans'] text-xs tracking-widest uppercase hover:text-[#BFF747] transition-colors"
           >
             <Instagram size={16} /> @electricsuncaldwell
           </a>
@@ -911,29 +959,29 @@ function NewsPage() {
       <div className="max-w-6xl mx-auto px-6 md:px-20 py-16">
         {/* Featured */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
-          <div className="bg-[#FBF3E8] relative overflow-hidden rounded-3xl h-[420px] group cursor-pointer shadow-sm" onClick={() => setActivePost(INSTAGRAM_POSTS[0])}>
+          <div className="bg-[#F2F7E6] relative overflow-hidden rounded-3xl h-[420px] group cursor-pointer shadow-sm" onClick={() => setActivePost(INSTAGRAM_POSTS[0])}>
             <img src={INSTAGRAM_POSTS[0].image} alt={INSTAGRAM_POSTS[0].caption} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[rgba(28,13,0,0.85)] to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[rgba(6,35,27,0.85)] to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-8">
               <div className="flex items-center gap-2 mb-3">
-                <Instagram size={14} className="text-[#E8C060]" />
-                <span className="text-[#C8A87A] font-['DM_Sans'] text-xs">{INSTAGRAM_POSTS[0].date}</span>
+                <Instagram size={14} className="text-[#BFF747]" />
+                <span className="text-[#8FAE94] font-['DM_Sans'] text-xs">{INSTAGRAM_POSTS[0].date}</span>
               </div>
-              <p className="text-[#FBF3E8] font-['DM_Sans'] text-sm leading-relaxed line-clamp-3">{INSTAGRAM_POSTS[0].caption}</p>
-              <p className="text-[#7A5530] font-['DM_Sans'] text-xs mt-2">♥ {INSTAGRAM_POSTS[0].likes}</p>
+              <p className="text-[#F2F7E6] font-['DM_Sans'] text-sm leading-relaxed line-clamp-3">{INSTAGRAM_POSTS[0].caption}</p>
+              <p className="text-[#55705A] font-['DM_Sans'] text-xs mt-2">♥ {INSTAGRAM_POSTS[0].likes}</p>
             </div>
           </div>
           <div className="grid grid-rows-2 gap-5">
             {INSTAGRAM_POSTS.slice(1, 3).map((post) => (
-              <div key={post.id} className="bg-[#FBF3E8] relative overflow-hidden rounded-3xl h-[209px] group cursor-pointer shadow-sm" onClick={() => setActivePost(post)}>
+              <div key={post.id} className="bg-[#F2F7E6] relative overflow-hidden rounded-3xl h-[209px] group cursor-pointer shadow-sm" onClick={() => setActivePost(post)}>
                 <img src={post.image} alt={post.caption} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(28,13,0,0.85)] to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(6,35,27,0.85)] to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <div className="flex items-center gap-2 mb-2">
-                    <Instagram size={12} className="text-[#E8C060]" />
-                    <span className="text-[#C8A87A] font-['DM_Sans'] text-xs">{post.date}</span>
+                    <Instagram size={12} className="text-[#BFF747]" />
+                    <span className="text-[#8FAE94] font-['DM_Sans'] text-xs">{post.date}</span>
                   </div>
-                  <p className="text-[#FBF3E8] font-['DM_Sans'] text-xs leading-relaxed line-clamp-2">{post.caption}</p>
+                  <p className="text-[#F2F7E6] font-['DM_Sans'] text-xs leading-relaxed line-clamp-2">{post.caption}</p>
                 </div>
               </div>
             ))}
@@ -941,12 +989,12 @@ function NewsPage() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-3 gap-px bg-[#E8D5B5]">
+        <div className="grid grid-cols-3 gap-px bg-[#D9EDBE]">
           {INSTAGRAM_POSTS.slice(3).map((post) => (
-            <div key={post.id} className="bg-[#FBF3E8] relative overflow-hidden aspect-square group cursor-pointer" onClick={() => setActivePost(post)}>
+            <div key={post.id} className="bg-[#F2F7E6] relative overflow-hidden aspect-square group cursor-pointer" onClick={() => setActivePost(post)}>
               <img src={post.image} alt={post.caption} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-              <div className="absolute inset-0 bg-[rgba(28,13,0,0)] group-hover:bg-[rgba(28,13,0,0.5)] transition-colors flex items-center justify-center">
-                <p className="text-[#FBF3E8] font-['DM_Sans'] text-xs opacity-0 group-hover:opacity-100 transition-opacity px-4 text-center">♥ {post.likes}</p>
+              <div className="absolute inset-0 bg-[rgba(6,35,27,0)] group-hover:bg-[rgba(6,35,27,0.5)] transition-colors flex items-center justify-center">
+                <p className="text-[#F2F7E6] font-['DM_Sans'] text-xs opacity-0 group-hover:opacity-100 transition-opacity px-4 text-center">♥ {post.likes}</p>
               </div>
             </div>
           ))}
@@ -957,7 +1005,7 @@ function NewsPage() {
             href="https://www.instagram.com/electricsuncaldwell/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3 border border-[rgba(184,104,32,0.4)] text-[#B86820] text-xs tracking-widest uppercase font-['DM_Sans'] hover:border-[#B86820] transition-colors"
+            className="inline-flex items-center gap-2 px-8 py-3 border border-[rgba(62,156,20,0.4)] text-[#3E9C14] text-xs tracking-widest uppercase font-['DM_Sans'] hover:border-[#3E9C14] transition-colors"
           >
             <Instagram size={14} /> Follow on Instagram
           </a>
@@ -967,24 +1015,24 @@ function NewsPage() {
       {/* Post modal */}
       {activePost && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(0,0,0,0.85)] p-6" onClick={() => setActivePost(null)}>
-          <div className="bg-[#1C0D00] max-w-lg w-full overflow-hidden" onClick={(e) => e.stopPropagation()}>
+          <div className="bg-[#06231B] max-w-lg w-full overflow-hidden" onClick={(e) => e.stopPropagation()}>
             <div className="aspect-square overflow-hidden">
               <img src={activePost.image} alt={activePost.caption} className="w-full h-full object-cover" />
             </div>
             <div className="p-6">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-8 h-8 rounded-full bg-[#B86820] flex items-center justify-center">
-                  <Sun size={14} className="text-[#FBF3E8]" strokeWidth={1.5} />
+                <div className="w-8 h-8 rounded-full bg-[#3E9C14] flex items-center justify-center">
+                  <Sun size={14} className="text-[#F2F7E6]" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <p className="text-[#E8C060] font-['DM_Sans'] text-sm font-medium">@electricsuntanning</p>
-                  <p className="text-[#7A5530] font-['DM_Sans'] text-xs">{activePost.date}</p>
+                  <p className="text-[#BFF747] font-['DM_Sans'] text-sm font-medium">@electricsuntanning</p>
+                  <p className="text-[#55705A] font-['DM_Sans'] text-xs">{activePost.date}</p>
                 </div>
               </div>
-              <p className="text-[#C8A87A] font-['DM_Sans'] text-sm leading-relaxed mb-4">{activePost.caption}</p>
-              <p className="text-[#7A5530] font-['DM_Sans'] text-xs">♥ {activePost.likes} likes</p>
+              <p className="text-[#8FAE94] font-['DM_Sans'] text-sm leading-relaxed mb-4">{activePost.caption}</p>
+              <p className="text-[#55705A] font-['DM_Sans'] text-xs">♥ {activePost.likes} likes</p>
             </div>
-            <button onClick={() => setActivePost(null)} className="absolute top-4 right-4 text-[#FBF3E8] bg-[rgba(0,0,0,0.5)] rounded-full p-1">
+            <button onClick={() => setActivePost(null)} className="absolute top-4 right-4 text-[#F2F7E6] bg-[rgba(0,0,0,0.5)] rounded-full p-1">
               <X size={18} />
             </button>
           </div>
@@ -999,23 +1047,23 @@ function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
 
   return (
-    <div className="min-h-screen bg-[#FBF3E8]">
-      <div className="bg-[#1C0D00] pt-32 pb-20 px-6 md:px-20">
-        <p className="text-[#D4952A] text-xs tracking-[0.35em] uppercase font-['DM_Sans'] mb-4">Get in touch</p>
-        <h1 className="font-['Playfair_Display'] text-5xl md:text-7xl text-[#FBF3E8] italic font-bold leading-tight">
-          We would love<br />to hear from you.
+    <div className="min-h-screen bg-[#F2F7E6]">
+      <div className="bg-[#06231B] pt-32 pb-20 px-6 md:px-20">
+        <p className="text-[#9BE81E] text-xs tracking-[0.35em] uppercase font-['DM_Sans'] mb-4">Get in touch</p>
+        <h1 className="font-['Shrikhand'] text-5xl md:text-7xl text-[#F2F7E6] italic font-bold leading-tight">
+          Come<br />say hi.
         </h1>
       </div>
 
       <div className="max-w-6xl mx-auto px-6 md:px-20 py-20 grid grid-cols-1 md:grid-cols-2 gap-16">
         {/* Form */}
         <div>
-          <h2 className="font-['Playfair_Display'] text-3xl text-[#1C0D00] italic mb-8">Send a message.</h2>
+          <h2 className="font-['Shrikhand'] text-3xl text-[#06231B] italic mb-8">Send a message.</h2>
           {sent ? (
-            <div className="border border-[rgba(184,104,32,0.2)] p-8 bg-[#FFF8EE]">
-              <Check size={24} className="text-[#B86820] mb-4" />
-              <h3 className="font-['Playfair_Display'] text-2xl text-[#1C0D00] italic mb-2">Message received.</h3>
-              <p className="text-[#7A5530] font-['DM_Sans'] text-sm">
+            <div className="border border-[rgba(62,156,20,0.2)] p-8 bg-[#FBFDF4]">
+              <Check size={24} className="text-[#3E9C14] mb-4" />
+              <h3 className="font-['Shrikhand'] text-2xl text-[#06231B] italic mb-2">Message received.</h3>
+              <p className="text-[#55705A] font-['DM_Sans'] text-sm">
                 Thank you, {form.name.split(" ")[0]}. We typically respond within 4 hours during studio hours.
               </p>
             </div>
@@ -1027,30 +1075,30 @@ function ContactPage() {
                 { key: "subject", label: "Subject", type: "text", placeholder: "Question about the Glow Package" },
               ].map((f) => (
                 <div key={f.key}>
-                  <label className="block text-[#1C0D00] font-['DM_Sans'] text-xs tracking-widest uppercase mb-2">{f.label}</label>
+                  <label className="block text-[#06231B] font-['DM_Sans'] text-xs tracking-widest uppercase mb-2">{f.label}</label>
                   <input
                     type={f.type}
                     placeholder={f.placeholder}
                     value={form[f.key as keyof typeof form]}
                     onChange={(e) => setForm({ ...form, [f.key]: e.target.value })}
-                    className="w-full bg-[#FFF8EE] border border-[rgba(184,104,32,0.3)] rounded-xl px-4 py-3 font-['DM_Sans'] text-[#1C0D00] placeholder:text-[#C8A87A] focus:outline-none focus:border-[#B86820] focus:ring-2 focus:ring-[#B86820]/25 transition-shadow"
+                    className="w-full bg-[#FBFDF4] border border-[rgba(62,156,20,0.3)] rounded-xl px-4 py-3 font-['DM_Sans'] text-[#06231B] placeholder:text-[#8FAE94] focus:outline-none focus:border-[#3E9C14] focus:ring-2 focus:ring-[#3E9C14]/25 transition-shadow"
                   />
                 </div>
               ))}
               <div>
-                <label className="block text-[#1C0D00] font-['DM_Sans'] text-xs tracking-widest uppercase mb-2">Message</label>
+                <label className="block text-[#06231B] font-['DM_Sans'] text-xs tracking-widest uppercase mb-2">Message</label>
                 <textarea
                   rows={5}
                   placeholder="Tell us how we can help..."
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full bg-[#FFF8EE] border border-[rgba(184,104,32,0.3)] rounded-xl px-4 py-3 font-['DM_Sans'] text-[#1C0D00] placeholder:text-[#C8A87A] focus:outline-none focus:border-[#B86820] focus:ring-2 focus:ring-[#B86820]/25 transition-shadow resize-none"
+                  className="w-full bg-[#FBFDF4] border border-[rgba(62,156,20,0.3)] rounded-xl px-4 py-3 font-['DM_Sans'] text-[#06231B] placeholder:text-[#8FAE94] focus:outline-none focus:border-[#3E9C14] focus:ring-2 focus:ring-[#3E9C14]/25 transition-shadow resize-none"
                 />
               </div>
               <button
                 onClick={() => { if (form.name && form.email && form.message) setSent(true); }}
                 disabled={!form.name || !form.email || !form.message}
-                className="w-full py-4 bg-[#B86820] text-[#FBF3E8] text-xs tracking-widest uppercase font-['DM_Sans'] hover:bg-[#D4952A] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                className="w-full py-4 bg-[#3E9C14] text-[#F2F7E6] text-xs tracking-widest uppercase font-['DM_Sans'] hover:bg-[#9BE81E] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 Send Message
               </button>
@@ -1060,7 +1108,7 @@ function ContactPage() {
 
         {/* Info */}
         <div>
-          <h2 className="font-['Playfair_Display'] text-3xl text-[#1C0D00] italic mb-8">Visit us.</h2>
+          <h2 className="font-['Shrikhand'] text-3xl text-[#06231B] italic mb-8">Visit us.</h2>
           <div className="space-y-6 mb-10">
             {[
               { icon: <MapPin size={16} />, label: "Address", value: "2713 Blaine Street Suite #100, Caldwell ID 83605" },
@@ -1068,21 +1116,21 @@ function ContactPage() {
               { icon: <Mail size={16} />, label: "Email", value: "hello@electricsuntanning.com" },
             ].map((item) => (
               <div key={item.label} className="flex gap-4">
-                <div className="w-10 h-10 border border-[rgba(184,104,32,0.3)] flex items-center justify-center text-[#B86820] shrink-0">
+                <div className="w-10 h-10 border border-[rgba(62,156,20,0.3)] flex items-center justify-center text-[#3E9C14] shrink-0">
                   {item.icon}
                 </div>
                 <div>
-                  <p className="text-[#B86820] font-['DM_Sans'] text-xs tracking-widest uppercase mb-1">{item.label}</p>
-                  <p className="text-[#1C0D00] font-['DM_Sans'] text-sm">{item.value}</p>
+                  <p className="text-[#3E9C14] font-['DM_Sans'] text-xs tracking-widest uppercase mb-1">{item.label}</p>
+                  <p className="text-[#06231B] font-['DM_Sans'] text-sm">{item.value}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="border border-[rgba(184,104,32,0.2)] p-6 bg-[#FFF8EE] mb-8">
+          <div className="border border-[rgba(62,156,20,0.2)] p-6 bg-[#FBFDF4] mb-8">
             <div className="flex items-center gap-2 mb-4">
-              <Clock size={14} className="text-[#B86820]" />
-              <p className="text-[#B86820] font-['DM_Sans'] text-xs tracking-widest uppercase">Studio Hours</p>
+              <Clock size={14} className="text-[#3E9C14]" />
+              <p className="text-[#3E9C14] font-['DM_Sans'] text-xs tracking-widest uppercase">Studio Hours</p>
             </div>
             <div className="space-y-2 font-['DM_Sans'] text-sm">
               {[
@@ -1090,25 +1138,25 @@ function ContactPage() {
                 { day: "Saturday", hours: "9:00 AM – 7:00 PM" },
                 { day: "Sunday", hours: "10:00 AM – 6:00 PM" },
               ].map((h) => (
-                <div key={h.day} className="flex justify-between text-[#7A5530]">
+                <div key={h.day} className="flex justify-between text-[#55705A]">
                   <span>{h.day}</span>
-                  <span className="text-[#1C0D00]">{h.hours}</span>
+                  <span className="text-[#06231B]">{h.hours}</span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Map placeholder */}
-          <div className="h-48 bg-[#1C0D00] relative overflow-hidden flex items-center justify-center">
+          <div className="h-48 bg-[#06231B] relative overflow-hidden flex items-center justify-center">
             <div
               className="absolute inset-0 opacity-20"
               style={{
-                backgroundImage: "radial-gradient(circle at 50% 50%, #D4952A 0%, transparent 70%)",
+                backgroundImage: "radial-gradient(circle at 50% 50%, #9BE81E 0%, transparent 70%)",
               }}
             />
             <div className="text-center z-10">
-              <MapPin size={24} className="text-[#E8C060] mx-auto mb-2" />
-              <p className="text-[#C8A87A] font-['DM_Sans'] text-xs tracking-widest uppercase">2713 Blaine Street Suite #100</p>
+              <MapPin size={24} className="text-[#BFF747] mx-auto mb-2" />
+              <p className="text-[#8FAE94] font-['DM_Sans'] text-xs tracking-widest uppercase">2713 Blaine Street Suite #100</p>
             </div>
           </div>
         </div>
@@ -1128,21 +1176,21 @@ function AdminDashboard() {
   });
 
   const statusColor: Record<string, string> = {
-    confirmed: "text-[#4A9E6F] bg-[rgba(74,158,111,0.12)]",
-    pending: "text-[#C8792A] bg-[rgba(200,121,42,0.12)]",
-    completed: "text-[#7A5530] bg-[rgba(122,85,48,0.12)]",
-    cancelled: "text-[#B03030] bg-[rgba(176,48,48,0.1)]",
+    confirmed: "text-[#4ADE80] bg-[rgba(74,222,128,0.12)]",
+    pending: "text-[#4ADE80] bg-[rgba(74,222,128,0.12)]",
+    completed: "text-[#55705A] bg-[rgba(85,112,90,0.12)]",
+    cancelled: "text-[#D64545] bg-[rgba(214,69,69,0.1)]",
   };
 
   return (
-    <div className="min-h-screen bg-[#100600] flex">
+    <div className="min-h-screen bg-[#031A12] flex">
       {/* Sidebar */}
-      <aside className="w-60 shrink-0 bg-[#1C0D00] border-r border-[rgba(212,149,42,0.15)] hidden md:flex flex-col">
-        <div className="px-6 py-6 border-b border-[rgba(212,149,42,0.15)]">
-          <div className="flex items-center gap-2 text-[#E8C060] font-['Playfair_Display'] italic text-lg">
+      <aside className="w-60 shrink-0 bg-[#06231B] border-r border-[rgba(163,230,53,0.15)] hidden md:flex flex-col">
+        <div className="px-6 py-6 border-b border-[rgba(163,230,53,0.15)]">
+          <div className="flex items-center gap-2 text-[#BFF747] font-['Shrikhand'] italic text-lg">
             <Sun size={16} strokeWidth={1.5} />Electric Sun Tanning
           </div>
-          <p className="text-[#3D2200] font-['DM_Mono'] text-xs mt-1">Admin Console</p>
+          <p className="text-[#6FA287] font-['DM_Mono'] text-xs mt-1">Admin Console</p>
         </div>
         <nav className="flex-1 px-3 py-4 space-y-1">
           {[
@@ -1156,16 +1204,16 @@ function AdminDashboard() {
               key={item.label}
               className={`w-full flex items-center gap-3 px-3 py-2.5 text-xs tracking-widest uppercase font-['DM_Sans'] transition-colors ${
                 item.active
-                  ? "bg-[rgba(212,149,42,0.15)] text-[#E8C060]"
-                  : "text-[#7A5530] hover:text-[#C8A87A] hover:bg-[rgba(212,149,42,0.07)]"
+                  ? "bg-[rgba(163,230,53,0.15)] text-[#BFF747]"
+                  : "text-[#55705A] hover:text-[#8FAE94] hover:bg-[rgba(163,230,53,0.07)]"
               } rounded-xl`}
             >
               {item.icon} {item.label}
             </button>
           ))}
         </nav>
-        <div className="px-3 py-4 border-t border-[rgba(212,149,42,0.15)]">
-          <button className="w-full flex items-center gap-3 px-3 py-2.5 text-xs tracking-widest uppercase font-['DM_Sans'] text-[#3D2200] hover:text-[#7A5530] transition-colors">
+        <div className="px-3 py-4 border-t border-[rgba(163,230,53,0.15)]">
+          <button className="w-full flex items-center gap-3 px-3 py-2.5 text-xs tracking-widest uppercase font-['DM_Sans'] text-[#6FA287] hover:text-[#55705A] transition-colors">
             <LogOut size={15} /> Sign Out
           </button>
         </div>
@@ -1174,14 +1222,14 @@ function AdminDashboard() {
       {/* Main */}
       <div className="flex-1 overflow-auto">
         {/* Top bar */}
-        <div className="sticky top-0 z-10 bg-[#1C0D00] border-b border-[rgba(212,149,42,0.15)] px-6 py-4 flex items-center justify-between">
+        <div className="sticky top-0 z-10 bg-[#06231B] border-b border-[rgba(163,230,53,0.15)] px-6 py-4 flex items-center justify-between">
           <div>
-            <h1 className="font-['Playfair_Display'] text-xl text-[#FBF3E8] italic">Dashboard</h1>
-            <p className="text-[#3D2200] font-['DM_Mono'] text-xs">Thursday, 19 June 2026</p>
+            <h1 className="font-['Shrikhand'] text-xl text-[#F2F7E6] neon-text">Dashboard</h1>
+            <p className="text-[#6FA287] font-['DM_Mono'] text-xs">Thursday, 19 June 2026</p>
           </div>
           <div className="flex items-center gap-4">
-            <button className="text-[#7A5530] hover:text-[#C8A87A] transition-colors"><Bell size={18} /></button>
-            <div className="w-8 h-8 rounded-full bg-[#B86820] flex items-center justify-center text-[#FBF3E8] font-['DM_Sans'] text-xs">AF</div>
+            <button className="text-[#55705A] hover:text-[#8FAE94] transition-colors"><Bell size={18} /></button>
+            <div className="w-8 h-8 rounded-full bg-[#3E9C14] flex items-center justify-center text-[#F2F7E6] font-['DM_Sans'] text-xs">AF</div>
           </div>
         </div>
 
@@ -1194,42 +1242,42 @@ function AdminDashboard() {
               { icon: <Users size={18} />, label: "Active Members", value: "87", delta: "+12 this month", positive: true },
               { icon: <TrendingUp size={18} />, label: "Avg. Session Value", value: "$42.80", delta: "+$3.20", positive: true },
             ].map((kpi) => (
-              <div key={kpi.label} className="bg-[#1C0D00] border border-[rgba(212,149,42,0.15)] rounded-2xl p-5 hover:border-[rgba(212,149,42,0.35)] transition-colors">
+              <div key={kpi.label} className="bg-[#06231B] border border-[rgba(163,230,53,0.15)] rounded-2xl p-5 hover:border-[rgba(163,230,53,0.35)] transition-colors">
                 <div className="flex items-center justify-between mb-3">
-                  <p className="text-[#7A5530] font-['DM_Sans'] text-xs tracking-widest uppercase">{kpi.label}</p>
-                  <span className="text-[#B86820]">{kpi.icon}</span>
+                  <p className="text-[#55705A] font-['DM_Sans'] text-xs tracking-widest uppercase">{kpi.label}</p>
+                  <span className="text-[#3E9C14]">{kpi.icon}</span>
                 </div>
-                <p className="font-['Playfair_Display'] text-3xl text-[#FBF3E8] mb-1">{kpi.value}</p>
-                <p className={`font-['DM_Mono'] text-xs ${kpi.positive ? "text-[#4A9E6F]" : "text-[#B03030]"}`}>{kpi.delta}</p>
+                <p className="font-['Shrikhand'] text-3xl text-[#F2F7E6] mb-1">{kpi.value}</p>
+                <p className={`font-['DM_Mono'] text-xs ${kpi.positive ? "text-[#4ADE80]" : "text-[#D64545]"}`}>{kpi.delta}</p>
               </div>
             ))}
           </div>
 
           {/* Charts */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="md:col-span-2 bg-[#1C0D00] border border-[rgba(212,149,42,0.15)] rounded-2xl p-5">
-              <p className="text-[#7A5530] font-['DM_Sans'] text-xs tracking-widest uppercase mb-6">Revenue — 6 Months</p>
+            <div className="md:col-span-2 bg-[#06231B] border border-[rgba(163,230,53,0.15)] rounded-2xl p-5">
+              <p className="text-[#55705A] font-['DM_Sans'] text-xs tracking-widest uppercase mb-6">Revenue — 6 Months</p>
               <ResponsiveContainer width="100%" height={200}>
                 <AreaChart data={REVENUE_DATA} margin={{ top: 0, right: 0, left: -20, bottom: 0 }}>
                   <defs>
                     <linearGradient id="revGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#B86820" stopOpacity={0.3} />
-                      <stop offset="95%" stopColor="#B86820" stopOpacity={0} />
+                      <stop offset="5%" stopColor="#3E9C14" stopOpacity={0.3} />
+                      <stop offset="95%" stopColor="#3E9C14" stopOpacity={0} />
                     </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(212,149,42,0.08)" />
-                  <XAxis dataKey="month" tick={{ fill: "#7A5530", fontSize: 11, fontFamily: "DM Mono" }} axisLine={false} tickLine={false} />
-                  <YAxis tick={{ fill: "#7A5530", fontSize: 11, fontFamily: "DM Mono" }} axisLine={false} tickLine={false} tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(163,230,53,0.08)" />
+                  <XAxis dataKey="month" tick={{ fill: "#55705A", fontSize: 11, fontFamily: "DM Mono" }} axisLine={false} tickLine={false} />
+                  <YAxis tick={{ fill: "#55705A", fontSize: 11, fontFamily: "DM Mono" }} axisLine={false} tickLine={false} tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`} />
                   <Tooltip
-                    contentStyle={{ background: "#2E1800", border: "1px solid rgba(212,149,42,0.25)", borderRadius: 0, fontFamily: "DM Sans", fontSize: 12, color: "#C8A87A" }}
+                    contentStyle={{ background: "#0D4430", border: "1px solid rgba(163,230,53,0.25)", borderRadius: 0, fontFamily: "DM Sans", fontSize: 12, color: "#8FAE94" }}
                     formatter={(v: number) => [`$${v.toLocaleString()}`, "Revenue"]}
                   />
-                  <Area type="monotone" dataKey="revenue" stroke="#D4952A" strokeWidth={2} fill="url(#revGrad)" />
+                  <Area type="monotone" dataKey="revenue" stroke="#9BE81E" strokeWidth={2} fill="url(#revGrad)" />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
-            <div className="bg-[#1C0D00] border border-[rgba(212,149,42,0.15)] rounded-2xl p-5">
-              <p className="text-[#7A5530] font-['DM_Sans'] text-xs tracking-widest uppercase mb-6">Service Mix</p>
+            <div className="bg-[#06231B] border border-[rgba(163,230,53,0.15)] rounded-2xl p-5">
+              <p className="text-[#55705A] font-['DM_Sans'] text-xs tracking-widest uppercase mb-6">Service Mix</p>
               <ResponsiveContainer width="100%" height={160}>
                 <PieChart>
                   <Pie data={SERVICE_MIX} dataKey="value" cx="50%" cy="50%" innerRadius={45} outerRadius={70} strokeWidth={0}>
@@ -1238,7 +1286,7 @@ function AdminDashboard() {
                     ))}
                   </Pie>
                   <Tooltip
-                    contentStyle={{ background: "#2E1800", border: "1px solid rgba(212,149,42,0.25)", borderRadius: 0, fontFamily: "DM Sans", fontSize: 12, color: "#C8A87A" }}
+                    contentStyle={{ background: "#0D4430", border: "1px solid rgba(163,230,53,0.25)", borderRadius: 0, fontFamily: "DM Sans", fontSize: 12, color: "#8FAE94" }}
                     formatter={(v: number) => [`${v}%`]}
                   />
                 </PieChart>
@@ -1248,9 +1296,9 @@ function AdminDashboard() {
                   <div key={s.name} className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full shrink-0" style={{ background: s.color }} />
-                      <span className="text-[#7A5530] font-['DM_Sans'] text-xs">{s.name}</span>
+                      <span className="text-[#55705A] font-['DM_Sans'] text-xs">{s.name}</span>
                     </div>
-                    <span className="text-[#C8A87A] font-['DM_Mono'] text-xs">{s.value}%</span>
+                    <span className="text-[#8FAE94] font-['DM_Mono'] text-xs">{s.value}%</span>
                   </div>
                 ))}
               </div>
@@ -1258,26 +1306,26 @@ function AdminDashboard() {
           </div>
 
           {/* Bookings table */}
-          <div className="bg-[#1C0D00] border border-[rgba(212,149,42,0.15)] rounded-2xl overflow-hidden">
-            <div className="px-5 py-4 border-b border-[rgba(212,149,42,0.1)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <p className="text-[#7A5530] font-['DM_Sans'] text-xs tracking-widest uppercase">Recent Bookings</p>
+          <div className="bg-[#06231B] border border-[rgba(163,230,53,0.15)] rounded-2xl overflow-hidden">
+            <div className="px-5 py-4 border-b border-[rgba(163,230,53,0.1)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <p className="text-[#55705A] font-['DM_Sans'] text-xs tracking-widest uppercase">Recent Bookings</p>
               <div className="flex gap-3">
                 <div className="relative">
-                  <Search size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#7A5530]" />
+                  <Search size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#55705A]" />
                   <input
                     type="text"
                     placeholder="Search..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="bg-[#2E1800] border border-[rgba(212,149,42,0.2)] rounded-full pl-8 pr-4 py-2 text-xs font-['DM_Sans'] text-[#C8A87A] placeholder:text-[#3D2200] focus:outline-none focus:border-[#B86820] w-44"
+                    className="bg-[#0D4430] border border-[rgba(163,230,53,0.2)] rounded-full pl-8 pr-4 py-2 text-xs font-['DM_Sans'] text-[#8FAE94] placeholder:text-[#6FA287] focus:outline-none focus:border-[#3E9C14] w-44"
                   />
                 </div>
                 <div className="relative">
-                  <Filter size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#7A5530]" />
+                  <Filter size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#55705A]" />
                   <select
                     value={statusFilter}
                     onChange={(e) => setStatusFilter(e.target.value)}
-                    className="bg-[#2E1800] border border-[rgba(212,149,42,0.2)] rounded-full pl-8 pr-4 py-2 text-xs font-['DM_Sans'] text-[#C8A87A] focus:outline-none focus:border-[#B86820] appearance-none cursor-pointer"
+                    className="bg-[#0D4430] border border-[rgba(163,230,53,0.2)] rounded-full pl-8 pr-4 py-2 text-xs font-['DM_Sans'] text-[#8FAE94] focus:outline-none focus:border-[#3E9C14] appearance-none cursor-pointer"
                   >
                     <option value="all">All</option>
                     <option value="confirmed">Confirmed</option>
@@ -1286,7 +1334,7 @@ function AdminDashboard() {
                     <option value="cancelled">Cancelled</option>
                   </select>
                 </div>
-                <button className="flex items-center gap-2 px-5 py-2 rounded-full bg-[#B86820] text-[#FBF3E8] text-xs tracking-widest uppercase font-['DM_Sans'] hover:bg-[#D4952A] transition-colors">
+                <button className="flex items-center gap-2 px-5 py-2 rounded-full bg-[#3E9C14] text-[#F2F7E6] text-xs tracking-widest uppercase font-['DM_Sans'] hover:bg-[#9BE81E] transition-colors">
                   <Plus size={12} /> New
                 </button>
               </div>
@@ -1294,37 +1342,37 @@ function AdminDashboard() {
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-[rgba(212,149,42,0.08)]">
+                  <tr className="border-b border-[rgba(163,230,53,0.08)]">
                     {["ID", "Client", "Service", "Date & Time", "Status", "Amount", "Actions"].map((h) => (
-                      <th key={h} className="px-5 py-3 text-left text-[#3D2200] font-['DM_Mono'] text-xs tracking-widest uppercase">{h}</th>
+                      <th key={h} className="px-5 py-3 text-left text-[#6FA287] font-['DM_Mono'] text-xs tracking-widest uppercase">{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   {filtered.map((b) => (
-                    <tr key={b.id} className="border-b border-[rgba(212,149,42,0.06)] hover:bg-[rgba(212,149,42,0.03)] transition-colors">
-                      <td className="px-5 py-4 font-['DM_Mono'] text-xs text-[#7A5530]">{b.id}</td>
-                      <td className="px-5 py-4 font-['DM_Sans'] text-sm text-[#C8A87A]">{b.client}</td>
-                      <td className="px-5 py-4 font-['DM_Sans'] text-sm text-[#FBF3E8]">{b.service}</td>
-                      <td className="px-5 py-4 font-['DM_Mono'] text-xs text-[#7A5530]">{b.date}</td>
+                    <tr key={b.id} className="border-b border-[rgba(163,230,53,0.06)] hover:bg-[rgba(163,230,53,0.03)] transition-colors">
+                      <td className="px-5 py-4 font-['DM_Mono'] text-xs text-[#55705A]">{b.id}</td>
+                      <td className="px-5 py-4 font-['DM_Sans'] text-sm text-[#8FAE94]">{b.client}</td>
+                      <td className="px-5 py-4 font-['DM_Sans'] text-sm text-[#F2F7E6]">{b.service}</td>
+                      <td className="px-5 py-4 font-['DM_Mono'] text-xs text-[#55705A]">{b.date}</td>
                       <td className="px-5 py-4">
                         <span className={`px-2.5 py-1 rounded-full font-['DM_Mono'] text-[11px] tracking-wide ${statusColor[b.status]}`}>
                           {b.status}
                         </span>
                       </td>
-                      <td className="px-5 py-4 font-['Playfair_Display'] text-lg text-[#D4952A]">${b.amount}</td>
+                      <td className="px-5 py-4 font-['Shrikhand'] text-lg text-[#9BE81E]">${b.amount}</td>
                       <td className="px-5 py-4">
                         <div className="flex gap-2">
-                          <button className="p-1 text-[#7A5530] hover:text-[#C8A87A] transition-colors"><Eye size={14} /></button>
-                          <button className="p-1 text-[#7A5530] hover:text-[#C8A87A] transition-colors"><Edit2 size={14} /></button>
-                          <button className="p-1 text-[#7A5530] hover:text-[#B03030] transition-colors"><Trash2 size={14} /></button>
+                          <button className="p-1 text-[#55705A] hover:text-[#8FAE94] transition-colors"><Eye size={14} /></button>
+                          <button className="p-1 text-[#55705A] hover:text-[#8FAE94] transition-colors"><Edit2 size={14} /></button>
+                          <button className="p-1 text-[#55705A] hover:text-[#D64545] transition-colors"><Trash2 size={14} /></button>
                         </div>
                       </td>
                     </tr>
                   ))}
                   {filtered.length === 0 && (
                     <tr>
-                      <td colSpan={7} className="px-5 py-12 text-center text-[#3D2200] font-['DM_Sans'] text-sm">
+                      <td colSpan={7} className="px-5 py-12 text-center text-[#6FA287] font-['DM_Sans'] text-sm">
                         No bookings match your filter.
                       </td>
                     </tr>
@@ -1371,10 +1419,10 @@ export default function App() {
       {page === "contact" && <ContactPage />}
       {page === "admin" && (
         <div>
-          <div className="bg-[#1C0D00] border-b border-[rgba(212,149,42,0.15)] px-4 py-2 flex items-center gap-4">
+          <div className="bg-[#06231B] border-b border-[rgba(163,230,53,0.15)] px-4 py-2 flex items-center gap-4">
             <button
               onClick={() => setPage("home")}
-              className="flex items-center gap-1 text-[#7A5530] hover:text-[#C8A87A] transition-colors font-['DM_Sans'] text-xs tracking-widest uppercase"
+              className="flex items-center gap-1 text-[#55705A] hover:text-[#8FAE94] transition-colors font-['DM_Sans'] text-xs tracking-widest uppercase"
             >
               <ChevronLeft size={12} /> Back to Site
             </button>
