@@ -1,8 +1,6 @@
-# Electric Sun Tanning - Salon Booking & Analytics Platform
+# Sun Tanning - Salon Booking & Analytics Platform
 
-A complete website and management platform built for **Electric Sun Tanning**, a tanning salon in Caldwell, Idaho. Customers can browse services and book a session online in under a minute, and the salon team gets a private admin dashboard with revenue analytics, booking management, and client insight - all in one place.
-
-**Studio:** 2713 Blaine Street Suite #100, Caldwell, ID 83605 · (208) 459-6565
+A complete website and management platform built for a tanning salon in Caldwell, Idaho. Customers can browse services and book a session online in under a minute, and the salon team gets a private admin dashboard with revenue analytics, booking management, and client insight - all in one place.
 
 ---
 
@@ -132,4 +130,4 @@ guidelines/
 
 ## License
 
-© Electric Sun Tanning. All rights reserved. Built for Electric Sun Tanning, Caldwell, Idaho - not open source.
+© Sun Tanning. All rights reserved. Built for Sun Tanning, Caldwell, Idaho - not open source.
