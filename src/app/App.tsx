@@ -53,7 +53,7 @@ const SERVICES = [
     duration: "10 min",
     price: 18,
     description:
-      "Our gentlest UV bed — perfect for building a base tan or maintaining your glow between sessions.",
+      "Our gentlest UV bed - perfect for building a base tan or maintaining your glow between sessions.",
     features: ["Level 1 UV bed", "Moisturising lotion included", "Cool mist fan"],
     image: "https://images.unsplash.com/photo-1532347922424-c652d9b7208e?w=600&h=400&fit=crop&auto=format",
   },
@@ -86,7 +86,7 @@ const SERVICES = [
     duration: "30 min",
     price: 45,
     description:
-      "Custom spray tan blended to your skin tone by our trained therapists — streak-free and long-lasting.",
+      "Custom spray tan blended to your skin tone by our trained therapists - streak-free and long-lasting.",
     features: ["Custom skin-tone blend", "Therapist-applied", "Organic solution", "Barrier cream & wipes", "Aftercare guide"],
     image: "https://images.unsplash.com/photo-1685979979782-759cbdd528ee?w=600&h=400&fit=crop&auto=format",
   },
@@ -97,7 +97,7 @@ const SERVICES = [
     duration: "Unlimited",
     price: 89,
     description:
-      "Unlimited sessions all month. Receive 40% off your first lotion — our best value offer!",
+      "Unlimited sessions all month. Receive 40% off your first lotion - our best value offer!",
     features: ["Unlimited UV sessions L1-3", "1× spray tan/month", "10% retail discount", "Priority booking"],
     image: "https://images.unsplash.com/photo-1579060849281-b27004433868?w=600&h=400&fit=crop&auto=format",
   },
@@ -110,7 +110,7 @@ const INSTAGRAM_POSTS = [
     id: 1,
     image: "https://images.unsplash.com/photo-1532347922424-c652d9b7208e?w=400&h=400&fit=crop&auto=format",
     likes: 312,
-    caption: "Sun-kissed and glowing ☀️ Book your Golden Hour session this weekend — slots filling fast!",
+    caption: "Sun-kissed and glowing ☀️ Book your Golden Hour session this weekend - slots filling fast!",
     date: "2 hours ago",
   },
   {
@@ -124,7 +124,7 @@ const INSTAGRAM_POSTS = [
     id: 3,
     image: "https://images.unsplash.com/photo-1665803174244-3c2d8c6f6108?w=400&h=400&fit=crop&auto=format",
     likes: 478,
-    caption: "Golden hour isn't just a time of day — it's a state of being ✨ #ElectricSunTanning #GoldenGlow",
+    caption: "Golden hour isn't just a time of day - it's a state of being ✨ #ElectricSunTanning #GoldenGlow",
     date: "2 days ago",
   },
   {
@@ -138,7 +138,7 @@ const INSTAGRAM_POSTS = [
     id: 5,
     image: "https://images.unsplash.com/photo-1770944661381-86054cf30749?w=400&h=400&fit=crop&auto=format",
     likes: 389,
-    caption: "New: Couples Glow — two sessions, one unforgettable afternoon. Book via link in bio 💛",
+    caption: "New: Couples Glow - two sessions, one unforgettable afternoon. Book via link in bio 💛",
     date: "5 days ago",
   },
   {
@@ -166,7 +166,7 @@ const TEAM = [
   {
     name: "Staff 2",
     role: "Client Experience Lead",
-    bio: "Isla ensures every visit feels like your first — warm, personal, and completely unhurried from arrival to aftercare.",
+    bio: "Isla ensures every visit feels like your first - warm, personal, and completely unhurried from arrival to aftercare.",
     image: "https://images.unsplash.com/photo-1579060849281-b27004433868?w=300&h=360&fit=crop&auto=format",
   },
 ];
@@ -342,7 +342,7 @@ function HeroPage({ setPage }: { setPage: (p: Page) => void }) {
             <span className="text-[#BFF747] neon-text">golden hour.</span>
           </h1>
           <p className="text-[#8FAE94] font-['DM_Sans'] text-lg md:text-xl max-w-xl leading-relaxed mb-10">
-            UV beds + spray tans, right here in Caldwell. Come as you are, leave glowing — no beach, no filter, no fuss.
+            UV beds + spray tans, right here in Caldwell. Come as you are, leave glowing - no beach, no filter, no fuss.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <button
@@ -359,7 +359,7 @@ function HeroPage({ setPage }: { setPage: (p: Page) => void }) {
             </button>
           </div>
           <p className="font-['Caveat'] font-semibold text-3xl text-[#BFF747] -rotate-2 mt-9 origin-left">
-            good vibes, great color — that's the whole business plan ☀
+            good vibes, great color - that's the whole business plan ☀
           </p>
         </div>
       </section>
@@ -439,7 +439,7 @@ function HeroPage({ setPage }: { setPage: (p: Page) => void }) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { name: "Sophie L.", rating: 5, text: "The Golden Hour session is absolutely transformative. I walk out looking like I've just returned from two weeks in Ibiza. Won't go anywhere else." },
-              { name: "James W.", rating: 5, text: "Spray tan is flawless — no streaks, no orange, just the most natural colour I've ever had. Marco is an artist." },
+              { name: "James W.", rating: 5, text: "Spray tan is flawless - no streaks, no orange, just the most natural colour I've ever had. Marco is an artist." },
               { name: "Elise M.", rating: 5, text: "The Glow Package pays for itself after two visits. Plus the studio is stunning. Feels like a luxury spa, not a tanning salon." },
             ].map((t) => (
               <div key={t.name} className="border border-[rgba(163,230,53,0.2)] bg-white/[0.03] rounded-3xl p-8 hover:border-[rgba(163,230,53,0.45)] hover:bg-white/[0.05] transition-all duration-300">
@@ -719,7 +719,7 @@ function BookingPage() {
           <div>
             <h2 className="font-['Shrikhand'] text-3xl text-[#06231B] italic mb-2">Choose a date & time</h2>
             <p className="text-[#55705A] font-['DM_Sans'] text-sm mb-8">
-              Booking: <span className="text-[#3E9C14]">{selected?.name}</span> — ${selected?.price}
+              Booking: <span className="text-[#3E9C14]">{selected?.name}</span> - ${selected?.price}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
@@ -860,13 +860,13 @@ function AboutPage() {
             </h2>
             <div className="space-y-4 text-[#55705A] font-['DM_Sans'] text-sm leading-relaxed">
               <p>
-                Too many tanning studios treat the session as a transaction. At Electric Sun Tanning, we take the time to understand your skin type, history, and goals — then build a personalised plan that gets you glowing safely and sustainably.
+                Too many tanning studios treat the session as a transaction. At Electric Sun Tanning, we take the time to understand your skin type, history, and goals - then build a personalised plan that gets you glowing safely and sustainably.
               </p>
               <p>
                 Every product we carry is dermatologist-reviewed and every bed is calibrated weekly. We were the first studio in the city to introduce red-light therapy alongside UV tanning, a combination that has transformed our clients' results.
               </p>
               <p>
-                We are women-founded, independently owned, and obsessively focused on the details that make the difference — from the scent you smell when you walk in, to the aftercare sachets you take home.
+                We are women-founded, independently owned, and obsessively focused on the details that make the difference - from the scent you smell when you walk in, to the aftercare sachets you take home.
               </p>
             </div>
           </div>
@@ -893,7 +893,7 @@ function AboutPage() {
             {[
               { title: "Skin-first always", body: "We never push for more UV exposure than your skin needs. Our therapists are trained to guide you, not just sell you sessions." },
               { title: "Quality over quantity", body: "Six services, all exceptional. We resist the urge to offer everything and instead perfect what we do." },
-              { title: "A space to feel good in", body: "The music, the lighting, the scent — every detail of the studio is considered so you feel the effect before you even step under the lamp." },
+              { title: "A space to feel good in", body: "The music, the lighting, the scent - every detail of the studio is considered so you feel the effect before you even step under the lamp." },
             ].map((v) => (
               <div key={v.title} className="bg-[#06231B] p-10">
                 <div className="w-8 h-px bg-[#3E9C14] mb-6" />
@@ -1256,7 +1256,7 @@ function AdminDashboard() {
           {/* Charts */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="md:col-span-2 bg-[#06231B] border border-[rgba(163,230,53,0.15)] rounded-2xl p-5">
-              <p className="text-[#55705A] font-['DM_Sans'] text-xs tracking-widest uppercase mb-6">Revenue — 6 Months</p>
+              <p className="text-[#55705A] font-['DM_Sans'] text-xs tracking-widest uppercase mb-6">Revenue - 6 Months</p>
               <ResponsiveContainer width="100%" height={200}>
                 <AreaChart data={REVENUE_DATA} margin={{ top: 0, right: 0, left: -20, bottom: 0 }}>
                   <defs>
