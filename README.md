@@ -131,3 +131,17 @@ guidelines/
 ## License
 
 © Sun Tanning. All rights reserved. Built for Sun Tanning, Caldwell, Idaho - not open source.
+
+## Portfolio gallery
+
+The [case study on jaelyncuellar.com](https://jaelyncuellar.com/projects/salon-booking) uses web versions of the screenshots in `docs/screenshots/`. Those exact files are kept here so the GitHub and portfolio visuals match. The walkthrough video in `docs/` is already the same file in both places.
+
+![Home - portfolio version](docs/portfolio/home.webp)
+
+![Booking - portfolio version](docs/portfolio/booking.webp)
+
+![Admin - portfolio version](docs/portfolio/admin.webp)
+
+![Services - portfolio version](docs/portfolio/services.webp)
+
+![Mobile - portfolio version](docs/portfolio/mobile.webp)
